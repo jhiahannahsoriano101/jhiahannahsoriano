@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Tools in Office Administration</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+    :root {
+      --bg-1: #040b16;
+      --bg-2: #0c1324;
+      --panel: rgba(12, 22, 36, 0.75);
+      --panel-border: rgba(94, 231, 255, 0.25);
+      --text: #ecfafe;
+      --muted: #adbed3;
+      --red: #57e6ff;
+      --blue: #6ea8fe;
+      --purple: #b197fc;
+      --green: #7ef2c0;
+      --orange: #ffbf69;
+      --shadow: 0 0 24px rgba(94, 231, 255, 0.28);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(94,231,255,0.12), transparent 25%),
+        radial-gradient(circle at bottom right, rgba(177,151,252,0.14), transparent 30%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 42px 0 70px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      padding: 18px 24px;
+      border: 1px solid var(--panel-border);
+      background: rgba(10, 18, 30, 0.7);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 0.08em;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      color: var(--cyan);
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: var(--text);
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: 0.25s ease;
+    }
+
+    .back-link:hover {
+      border-color: rgba(94,231,255,0.4);
+      background: rgba(94,231,255,0.05);
+    }
+
+    .hero-heading {
+      text-align: center;
+      margin: 24px auto 34px;
+      max-width: 1000px;
+    }
+
+    .hero-heading h1 {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(1.6rem, 3vw, 3rem);
+      line-height: 1.5;
+      text-transform: none;
+      letter-spacing: 0.02em;
+      color: #f5fbff;
+    }
+
+    .hero-heading p {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 1.04rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+      margin-top: 26px;
+    }
+
+    .card {
+      position: relative;
+      border: 1px solid var(--panel-border);
+      background: rgba(10, 18, 32, 0.78);
+      border-radius: 22px;
+      padding: 22px 18px 18px;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+      box-shadow: inset 0 0 20px rgba(94,231,255,0.03);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(94,231,255,0.5);
+      box-shadow: 0 0 30px rgba(94,231,255,0.18);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, rgba(94,231,255,0.18), rgba(177,151,252,0.18));
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 14px;
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .card p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .card a {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--cyan);
+      transition: opacity 0.2s ease;
+    }
+
+    .card a:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 640px) {
+      .topbar {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="topbar">
+      <div class="brand">Office AI</div>
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <div class="hero-heading">
+      <h1>AI tools for writing, scheduling, data processing, research, customer service, and responsible/ethical use of A.I.</h1>
+    </div>
+
+    <section class="cards">
+      <article class="card">
+        <div class="icon">✍️</div>
+        <h2>Writing</h2>
+        <p>Tools like ChatGPT and Grammarly help create polished emails, reports, and professional communication faster.</p>
+        <a href="https://chat.openai.com/" target="_blank" rel="noopener">Open ChatGPT →</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">📅</div>
+        <h2>Scheduling</h2>
+        <p>Calendly and AI calendar assistants make meeting coordination easier, faster, and more organized.</p>
+        <a href="https://www.calendly.com/" target="_blank" rel="noopener">Open Calendly →</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">📊</div>
+        <h2>Data Processing</h2>
+        <p>Excel Copilot and automation tools turn raw data into summaries, charts, and operational insights.</p>
+        <a href="https://www.microsoft.com/en-us/microsoft-365/excel" target="_blank" rel="noopener">Open Excel →</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">🔎</div>
+        <h2>Research</h2>
+        <p>Perplexity and similar AI tools help gather key facts, compare sources, and summarize information quickly.</p>
+        <a href="https://www.perplexity.ai/" target="_blank" rel="noopener">Open Perplexity →</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">💬</div>
+        <h2>Customer Service</h2>
+        <p>AI chatbots and customer support platforms improve responses, triage issues, and boost satisfaction.</p>
+        <a href="https://www.zendesk.com/" target="_blank" rel="noopener">Open Zendesk →</a>
+      </article>
+
+      <article class="card">
+        <div class="icon">⚖️</div>
+        <h2>Responsible AI</h2>
+        <p>Ethical AI practices help offices reduce bias, improve transparency, protect data, and use AI responsibly.</p>
+        <a href="https://warwick.ac.uk/fac/cross_fac/academic-development/ai/more/responsible-use/" target="_blank" rel="noopener">Explore Responsible AI →</a>
+      </article>
+    </section>
+  </div>
+</body>
+</html>
