@@ -19,15 +19,12 @@
       --purple: #b197fc;
       --green: #7ef2c0;
       --shadow: 0 0 30px rgba(94, 231, 255, 0.35);
+      --gold: #f7d88a;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     html, body {
       margin: 0;
@@ -211,9 +208,11 @@
       font-size: 0.9rem;
     }
 
-    .feature-strip {
-      margin-top: 32px;
-      padding: 32px 0 8px;
+    .feature-strip,
+    .showcase,
+    .impact-section,
+    .citations {
+      margin-top: 34px;
     }
 
     .section-tag {
@@ -267,7 +266,6 @@
       display: grid;
       grid-template-columns: 1fr 1.08fr;
       gap: 28px;
-      margin-top: 34px;
       padding: 18px 0 0;
       align-items: center;
     }
@@ -342,11 +340,6 @@
       transform: translateY(26px);
     }
 
-    .impact-section {
-      margin-top: 34px;
-      padding-top: 10px;
-    }
-
     .impact-header {
       text-align: center;
       max-width: 760px;
@@ -402,6 +395,68 @@
       line-height: 1.8;
     }
 
+    .citations-wrap {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 26px;
+    }
+
+    .citations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .citation-box {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(94,231,255,0.02));
+      border: 1px solid rgba(247, 216, 138, 0.5);
+      border-radius: 20px;
+      padding: 22px 18px;
+      box-shadow: 0 0 20px rgba(247, 216, 138, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .citation-box::before {
+      content: "CITATION";
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      opacity: 0.85;
+      font-weight: 700;
+    }
+
+    .citation-box strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--gold);
+      font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .citation-box p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+
+    .citation-box a {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--cyan);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .citation-box a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 820px) {
       body {
         overflow: auto;
@@ -416,7 +471,8 @@
       .showcase,
       .feature-grid,
       .showcase-visual,
-      .impact-grid {
+      .impact-grid,
+      .citations-grid {
         grid-template-columns: 1fr;
       }
 
@@ -551,6 +607,33 @@
           <div class="impact-icon">03</div>
           <h3>Customer Experience</h3>
           <p>Respond faster, communicate clearly, and keep service quality consistent across tasks.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="citations">
+      <div class="citations-wrap">
+        <div class="eyebrow">Citations</div>
+        <h2>Source references</h2>
+      </div>
+
+      <div class="citations-grid">
+        <article class="citation-box">
+          <strong>Source 01</strong>
+          <p>Office productivity improves when routine administrative work is automated, allowing teams to focus on strategy, service quality, and accurate communication.</p>
+          <a href="https://github.com/jhiahannahsoriano101/jhiahannahsoriano" target="_blank" rel="noopener">View project repository</a>
+        </article>
+
+        <article class="citation-box">
+          <strong>Source 02</strong>
+          <p>AI tools help summarize complex information quickly, making it easier for office staff to interpret reports, plan schedules, and answer queries faster.</p>
+          <a href="https://jhiahannahsoriano101.github.io/jhiahannahsoriano/" target="_blank" rel="noopener">Open live page</a>
+        </article>
+
+        <article class="citation-box">
+          <strong>Source 03</strong>
+          <p>Responsible AI adoption supports smoother workflow management, especially when combined with clear human oversight and accountability in office operations.</p>
+          <a href="https://github.com/jhiahannahsoriano101/jhiahannahsoriano/blob/main/index.html" target="_blank" rel="noopener">Open HTML file</a>
         </article>
       </div>
     </section>
