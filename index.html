@@ -3,25 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI in Office Administration</title>
+  <title>Artificial Intelligence in Office Administration</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
     :root {
-      --bg: #edf4ff;
-      --bg-2: #dfeeff;
-      --card: rgba(255, 255, 255, 0.8);
+      --bg: #f3f7ff;
+      --bg-2: #e6f0ff;
+      --card: rgba(255,255,255,0.86);
       --panel: #ffffff;
-      --panel-alt: #f3f8ff;
-      --line: #d9e7ff;
+      --line: #dfeaff;
       --primary: #1d4ed8;
-      --primary-2: #2563eb;
-      --secondary: #3b82f6;
+      --primary-soft: #dfeaff;
+      --secondary: #4f8cff;
       --text: #10233d;
-      --muted: #536d8a;
-      --success: #1a9d75;
-      --warning: #f59e0b;
-      --shadow: 0 18px 44px rgba(29, 78, 216, 0.08);
+      --muted: #586f8b;
+      --green: #1d9f7c;
+      --gold: #d59d00;
+      --shadow: 0 18px 44px rgba(20, 60, 150, 0.08);
       --radius: 24px;
     }
 
@@ -35,18 +34,19 @@
       margin: 0;
       font-family: 'Inter', sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(95, 157, 255, 0.08), transparent 28%),
+        radial-gradient(circle at top left, rgba(29, 78, 216, 0.08), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(79, 140, 255, 0.08), transparent 25%),
         linear-gradient(180deg, var(--bg), var(--bg-2));
       color: var(--text);
       min-height: 100vh;
       overflow-y: auto;
+      overflow-x: hidden;
     }
 
     .page-shell {
       width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 32px 0 80px;
+      padding: 28px 0 90px;
     }
 
     .topbar {
@@ -54,7 +54,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 18px 22px;
-      background: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.72);
       backdrop-filter: blur(8px);
       border: 1px solid var(--line);
       border-radius: 18px;
@@ -63,7 +63,7 @@
     }
 
     .brand {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 800;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -72,8 +72,8 @@
 
     .nav {
       display: flex;
-      gap: 18px;
       align-items: center;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
@@ -96,7 +96,7 @@
     }
 
     .hero-main,
-    .insight-panel {
+    .highlight-panel {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -119,9 +119,9 @@
 
     .eyebrow {
       display: inline-block;
-      background: rgba(37, 99, 235, 0.08);
+      background: rgba(29, 78, 216, 0.08);
       color: var(--primary);
-      border: 1px solid rgba(37, 99, 235, 0.12);
+      border: 1px solid rgba(29, 78, 216, 0.12);
       border-radius: 999px;
       padding: 8px 14px;
       letter-spacing: 0.12em;
@@ -133,18 +133,18 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(2.7rem, 4vw, 5rem);
+      font-size: clamp(2.8rem, 4vw, 5rem);
       line-height: 0.96;
       letter-spacing: -0.06em;
       color: var(--text);
     }
 
     .hero-sub {
+      margin-top: 18px;
       color: var(--muted);
       line-height: 1.8;
-      font-size: 1.04rem;
-      margin-top: 18px;
-      max-width: 720px;
+      font-size: 1.05rem;
+      max-width: 760px;
     }
 
     .cta-row {
@@ -177,11 +177,11 @@
 
     .btn-secondary {
       border: 1px solid var(--line);
-      color: var(--text);
       background: rgba(255,255,255,0.7);
+      color: var(--text);
     }
 
-    .insight-panel {
+    .highlight-panel {
       padding: 24px 22px;
     }
 
@@ -217,7 +217,7 @@
     }
 
     .meta-card {
-      background: var(--panel-alt);
+      background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 18px;
       padding: 14px 16px;
@@ -297,6 +297,81 @@
       margin: 0;
       color: var(--muted);
       line-height: 1.8;
+    }
+
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .split-copy {
+      padding: 18px 0;
+    }
+
+    .split-copy h3 {
+      margin: 0 0 14px;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.1;
+    }
+
+    .split-copy p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.02rem;
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+
+    .step-badge {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+      font-size: 0.84rem;
+      flex-shrink: 0;
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.98rem;
+    }
+
+    .step span {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.92rem;
+    }
+
+    .tech-image {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      object-fit: cover;
+      box-shadow: var(--shadow);
     }
 
     .feature-grid {
@@ -392,7 +467,8 @@
     }
 
     @media (max-width: 900px) {
-      .hero {
+      .hero,
+      .split-layout {
         grid-template-columns: 1fr;
       }
 
@@ -414,10 +490,7 @@
         gap: 12px;
       }
 
-      .hero-main {
-        padding: 24px 18px;
-      }
-
+      .hero-main,
       .section {
         padding: 18px 16px;
       }
@@ -430,7 +503,8 @@
       <div class="brand">AI RESEARCH</div>
       <nav class="nav">
         <a href="#overview">Overview</a>
-        <a href="#findings">Findings</a>
+        <a href="#how-ai-works">How it works</a>
+        <a href="#generation">5th Gen</a>
         <a href="#relevance">Relevance</a>
         <a href="#sources">Sources</a>
       </nav>
@@ -439,11 +513,11 @@
     <main class="hero" id="overview">
       <section class="hero-main">
         <div class="eyebrow">Research prompt</div>
-        <h1>How AI tools are relevant in office administration.</h1>
+        <h1>How AI is shaping office administration.</h1>
         <p class="hero-sub">
-          Artificial intelligence tools are becoming increasingly relevant in office administration because they help teams save time,
-          improve communication, organize work, and make decisions more efficiently. These technologies are especially useful for
-          repetitive tasks, data handling, scheduling, writing support, and customer service.
+          Artificial intelligence is becoming increasingly relevant in office administration because it helps teams process information faster,
+          automate repetitive work, improve communication, and support better decision-making. It is changing how offices work by making routine activities
+          smarter and more efficient.
         </p>
 
         <div class="cta-row">
@@ -452,20 +526,19 @@
         </div>
       </section>
 
-      <aside class="insight-panel">
+      <aside class="highlight-panel">
         <div class="prompt-box">
           <div class="prompt-label">Research question</div>
           <p>
-            Why are AI tools important in modern office administration, and how can they improve efficiency, communication,
-            and decision-making in everyday work?
+            Why is AI becoming more important in office work, and how does it help improve efficiency, scheduling, communication, and productivity?
           </p>
         </div>
 
         <div class="meta-grid">
           <div class="meta-card">
             <div class="meta-label">Focus</div>
-            <strong>6</strong>
-            <span>Core areas</span>
+            <strong>AI</strong>
+            <span>Office systems</span>
           </div>
 
           <div class="meta-card">
@@ -487,30 +560,100 @@
         <article class="finding-card">
           <h3>Efficiency</h3>
           <p>
-            AI helps office teams reduce time spent on repetitive tasks such as writing, scheduling, and summarizing information.
+            AI reduces the amount of time staff spend on repetitive tasks like writing emails, scheduling meetings, and summarizing information.
           </p>
         </article>
 
         <article class="finding-card">
           <h3>Accuracy</h3>
           <p>
-            AI tools can improve consistency in reports, emails, meeting notes, and data-driven tasks while supporting human decision-making.
+            AI tools can improve data entry, writing quality, and documentation consistency while helping reduce errors in regular office work.
           </p>
         </article>
 
         <article class="finding-card">
           <h3>Responsibility</h3>
           <p>
-            Even with these benefits, AI should be used carefully with human oversight, data privacy awareness, and ethical considerations.
+            AI should still be used carefully, with human oversight, privacy awareness, and ethical judgment to ensure safe and fair use in workplaces.
           </p>
         </article>
+      </div>
+    </section>
+
+    <section class="section" id="how-ai-works">
+      <div class="section-title-row">
+        <div class="section-title">How AI works</div>
+        <div class="section-sub">In simple terms</div>
+      </div>
+
+      <div class="split-layout">
+        <div class="split-copy">
+          <h3>AI learns patterns and makes predictions from data.</h3>
+          <p>
+            AI is built to process data, identify patterns, and use those patterns to make decisions, generate content, or suggest actions.
+            It works through machine learning, natural language processing, and data analysis. In office administration, this can mean drafting documents,
+            organizing information, scheduling meetings, or predicting work patterns.
+          </p>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-badge">1</div>
+              <div>
+                <strong>Input</strong>
+                <span>Data such as emails, schedules, reports, or customer inquiries is collected.</span>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-badge">2</div>
+              <div>
+                <strong>Pattern recognition</strong>
+                <span>AI identifies patterns in text, behavior, and structured information to understand context.</span>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-badge">3</div>
+              <div>
+                <strong>Decision support</strong>
+                <span>It then generates suggestions, summaries, or actions that help humans complete tasks more efficiently.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <img class="tech-image" src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1200&q=80" alt="Artificial intelligence systems and data processing" />
+      </div>
+    </section>
+
+    <section class="section" id="generation">
+      <div class="section-title-row">
+        <div class="section-title">The 5th generation of computers</div>
+        <div class="section-sub">AI and intelligent systems</div>
+      </div>
+
+      <div class="split-layout">
+        <img class="tech-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Future computing and AI systems" />
+
+        <div class="split-copy">
+          <h3>AI is often linked with the fifth generation of computing.</h3>
+          <p>
+            The fifth generation of computers is associated with intelligent systems, machine learning, natural language processing,
+            and more advanced interaction between humans and machines. In this generation, computers are not only used to process numbers,
+            but also to understand language, detect patterns, and support decision-making in real-world tasks.
+          </p>
+          <p>
+            This makes AI especially relevant to office administration, where information flows constantly and tasks often involve communication,
+            scheduling, analysis, and coordination. AI helps turn large amounts of information into useful, practical actions.
+          </p>
+        </div>
       </div>
     </section>
 
     <section class="section" id="relevance">
       <div class="section-title-row">
         <div class="section-title">Why AI is relevant</div>
-        <div class="section-sub">In office administration</div>
+        <div class="section-sub">In everyday office work</div>
       </div>
 
       <div class="feature-grid">
@@ -519,7 +662,7 @@
           <div class="feature-content">
             <h4>Writing support</h4>
             <p>
-              AI tools can draft emails, improve grammar, summarize notes, and create clearer communication for administrative teams.
+              AI helps generate drafts, improve grammar, summarize meetings, and create clear communication for office teams.
             </p>
           </div>
         </article>
@@ -529,17 +672,17 @@
           <div class="feature-content">
             <h4>Scheduling and planning</h4>
             <p>
-              AI helps coordinate calendars, automate meeting bookings, and organize tasks so office operations run more smoothly.
+              It helps organize calendars, automate reminders, and reduce time spent coordinating meetings and tasks.
             </p>
           </div>
         </article>
 
         <article class="feature-card">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Data processing and research" />
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Data and analytics" />
           <div class="feature-content">
-            <h4>Data and research</h4>
+            <h4>Data and analysis</h4>
             <p>
-              AI assists with gathering information, analyzing data, summarizing reports, and identifying patterns that support decision-making.
+              AI can process large amounts of information quickly, turning raw data into insights and better decisions.
             </p>
           </div>
         </article>
@@ -555,11 +698,23 @@
       <div class="citations-grid">
         <article class="citation-box">
           <strong>Source 01</strong>
-          <p>AI technology helps offices automate repetitive tasks and improve productivity when paired with human oversight.</p>
+          <p>AI tools support office productivity by automating repetitive work and improving decision support in administrative tasks.</p>
           <a href="https://github.com/jhiahannahsoriano101/jhiahannahsoriano" target="_blank" rel="noopener">View project</a>
         </article>
 
         <article class="citation-box">
           <strong>Source 02</strong>
-          <p>Research tools and office software increasingly rely on AI to support communication, analysis, and scheduling.</p>
-          <a href="https://
+          <p>Machine learning and natural language processing are core technologies behind modern AI systems used in workplaces.</p>
+          <a href="https://jhiahannahsoriano101.github.io/jhiahannahsoriano/" target="_blank" rel="noopener">Open live page</a>
+        </article>
+
+        <article class="citation-box">
+          <strong>Source 03</strong>
+          <p>Responsible AI use is important because human oversight, privacy, and fairness remain necessary in all workplace applications.</p>
+          <a href="https://github.com/jhiahannahsoriano101/jhiahannahsoriano/blob/main/page2.html" target="_blank" rel="noopener">Open AI tools page</a>
+        </article>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
