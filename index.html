@@ -3,61 +3,67 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Tools | Office Productivity</title>
+  <title>Artificial Intelligence in Office Administration</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
     :root {
-      --bg: #eef5ff;
-      --bg-2: #dfeeff;
-      --card: rgba(255,255,255,0.82);
+      --bg: #f3f7ff;
+      --bg-2: #e6f0ff;
+      --card: rgba(255,255,255,0.86);
       --panel: #ffffff;
-      --line: #d9e7ff;
+      --line: #dfeaff;
       --primary: #1d4ed8;
-      --secondary: #3b82f6;
+      --primary-soft: #dfeaff;
+      --secondary: #4f8cff;
       --text: #10233d;
-      --muted: #536d8a;
-      --shadow: 0 18px 44px rgba(29,78,216,0.08);
+      --muted: #586f8b;
+      --green: #1d9f7c;
+      --gold: #d59d00;
+      --shadow: 0 18px 44px rgba(20, 60, 150, 0.08);
       --radius: 24px;
     }
 
     * { box-sizing: border-box; }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(37,99,235,0.08), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(95,157,255,0.08), transparent 30%),
+        radial-gradient(circle at top left, rgba(29, 78, 216, 0.08), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(79, 140, 255, 0.08), transparent 25%),
         linear-gradient(180deg, var(--bg), var(--bg-2));
       color: var(--text);
+      min-height: 100vh;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
 
     .page-shell {
-      width: min(1180px, calc(100% - 34px));
+      width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 32px 0 80px;
+      padding: 28px 0 90px;
     }
 
     .topbar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 20px;
+      justify-content: space-between;
       padding: 18px 22px;
-      margin-bottom: 30px;
-      background: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: blur(8px);
       border: 1px solid var(--line);
       border-radius: 18px;
       box-shadow: var(--shadow);
+      margin-bottom: 30px;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 120px;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 800;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -67,7 +73,6 @@
     .nav {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
       gap: 18px;
       flex-wrap: wrap;
     }
@@ -76,16 +81,22 @@
       text-decoration: none;
       color: var(--muted);
       font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 26px;
       margin-bottom: 30px;
     }
 
-    .hero-main, .prompt-panel, .section, .news-box {
+    .hero-main,
+    .highlight-panel {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -94,42 +105,53 @@
 
     .hero-main {
       padding: 34px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), #7dd3fc, #a78bfa);
     }
 
     .eyebrow {
       display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(37,99,235,0.08);
-      border: 1px solid rgba(37,99,235,0.12);
+      background: rgba(29, 78, 216, 0.08);
       color: var(--primary);
-      font-size: 0.72rem;
+      border: 1px solid rgba(29, 78, 216, 0.12);
+      border-radius: 999px;
+      padding: 8px 14px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      font-size: 0.72rem;
       font-weight: 800;
       margin-bottom: 18px;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.5rem, 4vw, 4.4rem);
-      line-height: 0.98;
+      font-size: clamp(2.8rem, 4vw, 5rem);
+      line-height: 0.96;
       letter-spacing: -0.06em;
+      color: var(--text);
     }
 
     .hero-sub {
       margin-top: 18px;
       color: var(--muted);
-      font-size: 1.04rem;
       line-height: 1.8;
-      max-width: 700px;
+      font-size: 1.05rem;
+      max-width: 760px;
     }
 
     .cta-row {
       display: flex;
-      gap: 14px;
+      gap: 16px;
       flex-wrap: wrap;
-      margin-top: 26px;
+      margin-top: 28px;
     }
 
     .btn {
@@ -143,12 +165,6 @@
       transition: 0.2s ease;
     }
 
-    .btn-secondary {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.7);
-      color: var(--text);
-    }
-
     .btn-primary {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
@@ -159,7 +175,13 @@
       transform: translateY(-1px);
     }
 
-    .prompt-panel {
+    .btn-secondary {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.7);
+      color: var(--text);
+    }
+
+    .highlight-panel {
       padding: 24px 22px;
     }
 
@@ -167,17 +189,24 @@
       border: 1px solid var(--line);
       background: linear-gradient(180deg, #f8fbff, #eef6ff);
       border-radius: 18px;
-      padding: 18px;
+      padding: 18px 18px 16px;
     }
 
     .prompt-label {
       display: inline-block;
-      margin-bottom: 12px;
       font-size: 0.7rem;
-      color: var(--primary);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
       font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+
+    .prompt-box p {
+      margin: 0;
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 0.98rem;
     }
 
     .meta-grid {
@@ -195,33 +224,42 @@
     }
 
     .meta-label {
-      margin-bottom: 8px;
       font-size: 0.72rem;
-      letter-spacing: 0.12em;
       text-transform: uppercase;
+      letter-spacing: 0.12em;
       color: var(--muted);
       font-weight: 700;
+      margin-bottom: 8px;
     }
 
     .meta-card strong {
       display: block;
-      color: var(--primary);
       font-size: 1.5rem;
       letter-spacing: -0.05em;
+      color: var(--primary);
+    }
+
+    .meta-card span {
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
     .section {
       margin-top: 28px;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       padding: 24px 22px;
     }
 
     .section-title-row {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 16px;
-      margin-bottom: 18px;
       flex-wrap: wrap;
+      margin-bottom: 22px;
     }
 
     .section-title {
@@ -237,67 +275,206 @@
       font-size: 0.92rem;
     }
 
-    .tool-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .findings-grid {
       display: grid;
-      gap: 14px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .tool-item {
-      background: rgba(255,255,255,0.8);
+    .finding-card {
+      background: white;
       border: 1px solid var(--line);
       border-radius: 18px;
-      padding: 18px 20px;
+      padding: 20px 18px;
     }
 
-    .tool-item strong {
-      display: block;
-      font-size: 1.12rem;
-      margin-bottom: 6px;
-      color: var(--text);
+    .finding-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.15rem;
     }
 
-    .tool-item span {
-      color: var(--primary);
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
-
-    .tool-item p {
-      margin: 8px 0 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .news-box {
-      margin-top: 28px;
-      padding: 26px 22px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(240,246,255,0.9));
-    }
-
-    .news-box h3 {
-      margin: 0 0 10px;
-      font-size: 1.4rem;
-    }
-
-    .news-box p {
-      margin: 0 0 14px;
+    .finding-card p {
+      margin: 0;
       color: var(--muted);
       line-height: 1.8;
     }
 
-    .news-box a {
+    .split-layout {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .split-copy {
+      padding: 18px 0;
+    }
+
+    .split-copy h3 {
+      margin: 0 0 14px;
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.1;
+    }
+
+    .split-copy p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.02rem;
+    }
+
+    .steps {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+
+    .step-badge {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+      font-size: 0.84rem;
+      flex-shrink: 0;
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 0.98rem;
+    }
+
+    .step span {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.92rem;
+    }
+
+    .tech-image {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      object-fit: cover;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 8px;
+    }
+
+    .feature-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 14px 22px rgba(35, 67, 128, 0.04);
+    }
+
+    .feature-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feature-content {
+      padding: 18px 18px 20px;
+    }
+
+    .feature-content h4 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .feature-content p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .citations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .citation-box {
+      background: linear-gradient(180deg, #ffffff, #f6faff);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      position: relative;
+    }
+
+    .citation-box::before {
+      content: "SOURCE";
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
       color: var(--primary);
-      font-weight: 700;
+      font-weight: 800;
+    }
+
+    .citation-box strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--primary);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .citation-box p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .citation-box a {
+      display: inline-block;
+      margin-top: 12px;
+      color: var(--primary);
       text-decoration: none;
+      font-weight: 700;
+    }
+
+    .citation-box a:hover {
+      text-decoration: underline;
     }
 
     @media (max-width: 900px) {
-      .hero {
+      .hero,
+      .split-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .findings-grid,
+      .feature-grid,
+      .citations-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -306,10 +483,16 @@
       .topbar {
         flex-direction: column;
         align-items: flex-start;
+        gap: 12px;
       }
 
       .nav {
-        justify-content: flex-start;
+        gap: 12px;
+      }
+
+      .hero-main,
+      .section {
+        padding: 18px 16px;
       }
     }
   </style>
@@ -317,108 +500,244 @@
 <body>
   <div class="page-shell">
     <header class="topbar">
-      <div class="brand">Office AI</div>
+      <div class="brand">AI RESEARCH</div>
       <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="page2.html">Page 2</a>
-        <a href="#tools">Tools</a>
-        <a href="#news">IT News</a>
+        <a href="#overview">Overview</a>
+        <a href="#how-ai-works">How it works</a>
+        <a href="#generation">5th Gen</a>
+        <a href="#relevance">Relevance</a>
+        <a href="#sources">Sources</a>
       </nav>
     </header>
 
-    <main class="hero">
+    <main class="hero" id="overview">
       <section class="hero-main">
-        <div class="eyebrow">Office productivity</div>
-        <h1>AI tools help teams work smarter, faster, and with less admin pressure.</h1>
+        <div class="eyebrow">Research prompt</div>
+        <h1>"Artificial Intelligence in Office Administration"</h1>
         <p class="hero-sub">
-          Administrative work often slows down employees with repetitive tasks, manual reporting, scheduling, and communication. AI tools reduce these demands and create more time for decisions, planning, and customer support.
+          Artificial intelligence is becoming increasingly relevant in office administration because it helps teams process information faster,
+          automate repetitive work, improve communication, and support better decision-making. It is changing how offices work by making routine activities
+          smarter and more efficient.
         </p>
 
+        <section class="info-box">
+  <div class="section-label">Introduction</div>
+  <div class="info-grid">
+    <div class="info-card">
+      <h3>What is AI?</h3>
+      <p>
+        Artificial Intelligence (AI) is the ability of a computer system to perform tasks
+        that usually require human intelligence, such as learning, reasoning, problem-solving,
+        understanding language, and recognizing patterns.
+      </p>
+    </div>
+
+    <div class="info-card">
+      <h3>Where did it come from?</h3>
+      <p>
+        AI began as an academic field in 1956 during the Dartmouth Conference, where
+        researchers such as John McCarthy introduced the idea of building machines that
+        could think and learn like humans. Since then, AI has grown through research,
+        data, and computing power.
+      </p>
+    </div>
+  </div>
+</section>
+        
         <div class="cta-row">
-          <a href="page2.html" class="btn btn-secondary">Back to page 2</a>
-          <a href="#news" class="btn btn-primary">Know more</a>
+          <a href="page2.html" class="btn btn-primary">Explore AI tools</a>
+          <a href="#sources" class="btn btn-secondary">View sources</a>
         </div>
       </section>
 
-      <aside class="prompt-panel">
+      <aside class="highlight-panel">
         <div class="prompt-box">
-          <div class="prompt-label">Summary</div>
+          <div class="prompt-label">Research question</div>
           <p>
-            AI-powered tools are now widely used to improve communication, increase productivity, support data analysis, streamline scheduling, and improve customer service.
+            Why is AI becoming more important in office work, and how does it help improve efficiency, scheduling, communication, and productivity?
           </p>
         </div>
 
         <div class="meta-grid">
           <div class="meta-card">
             <div class="meta-label">Focus</div>
-            <strong>Admin</strong>
-            <span>Less repetitive work</span>
+            <strong>AI</strong>
+            <span>Office systems</span>
           </div>
 
           <div class="meta-card">
-            <div class="meta-label">Result</div>
-            <strong>Faster</strong>
-            <span>Smarter workflows</span>
+            <div class="meta-label">Impact</div>
+            <strong>High</strong>
+            <span>Efficiency gain</span>
           </div>
         </div>
       </aside>
     </main>
 
-    <section class="section" id="tools">
+    <section class="section" id="findings">
       <div class="section-title-row">
-        <div class="section-title">Popular AI office tools</div>
-        <div class="section-sub">Used across departments</div>
+        <div class="section-title">Key findings</div>
+        <div class="section-sub">Why it matters</div>
       </div>
 
-      <ul class="tool-list">
-        <li class="tool-item">
-          <span>Writing</span>
-          <strong>ChatGPT</strong>
-          <p>Helps generate emails, reports, meeting notes, and summaries so teams can work faster and focus on decision-making.</p>
-        </li>
+      <div class="findings-grid">
+        <article class="finding-card">
+          <h3>Efficiency</h3>
+          <p>
+            AI reduces the amount of time staff spend on repetitive tasks like writing emails, scheduling meetings, and summarizing information.
+          </p>
+        </article>
 
-        <li class="tool-item">
-          <span>Writing</span>
-          <strong>Grammarly</strong>
-          <p>Improves clarity, grammar, and tone in professional communication before messages are sent to colleagues or clients.</p>
-        </li>
+        <article class="finding-card">
+          <h3>Accuracy</h3>
+          <p>
+            AI tools can improve data entry, writing quality, and documentation consistency while helping reduce errors in regular office work.
+          </p>
+        </article>
 
-        <li class="tool-item">
-          <span>Research</span>
-          <strong>Perplexity</strong>
-          <p>Finds answers quickly, compares sources, and gives concise summaries to support planning and research tasks.</p>
-        </li>
-
-        <li class="tool-item">
-          <span>Scheduling</span>
-          <strong>Calendly</strong>
-          <p>Reduces scheduling back-and-forth by allowing teams and clients to book meetings based on availability in real time.</p>
-        </li>
-
-        <li class="tool-item">
-          <span>Data</span>
-          <strong>Microsoft Excel Copilot</strong>
-          <p>Helps analyze spreadsheets, generate formulas, and spot trends more efficiently for office reporting and decision support.</p>
-        </li>
-
-        <li class="tool-item">
-          <span>Support</span>
-          <strong>Zendesk</strong>
-          <p>Improves customer service by automating support tasks, organizing tickets, and speeding up response times.</p>
-        </li>
-
-        <li class="tool-item">
-          <span>Ethics</span>
-          <strong>Responsible AI</strong>
-          <p>Encourages fairness, transparency, privacy, and human oversight so AI use remains safe and reliable in the workplace.</p>
-        </li>
-      </ul>
+        <article class="finding-card">
+          <h3>Responsibility</h3>
+          <p>
+            AI should still be used carefully, with human oversight, privacy awareness, and ethical judgment to ensure safe and fair use in workplaces.
+          </p>
+        </article>
+      </div>
     </section>
 
-    <section class="news-box" id="news">
-      <h3>Want to know more about IT news?</h3>
-      <p>Stay updated with the latest developments in workplace technology, digital tools, and business systems.</p>
-      <a href="https://www.itnews.com/" target="_blank" rel="noopener">Read IT News →</a>
+    <section class="section" id="how-ai-works">
+      <div class="section-title-row">
+        <div class="section-title">How AI works</div>
+        <div class="section-sub">In simple terms</div>
+      </div>
+
+      <div class="split-layout">
+        <div class="split-copy">
+          <h3>AI learns patterns and makes predictions from data.</h3>
+          <p>
+            AI is built to process data, identify patterns, and use those patterns to make decisions, generate content, or suggest actions.
+            It works through machine learning, natural language processing, and data analysis. In office administration, this can mean drafting documents,
+            organizing information, scheduling meetings, or predicting work patterns.
+          </p>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-badge">1</div>
+              <div>
+                <strong>Input</strong>
+                <span>Data such as emails, schedules, reports, or customer inquiries is collected.</span>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-badge">2</div>
+              <div>
+                <strong>Pattern recognition</strong>
+                <span>AI identifies patterns in text, behavior, and structured information to understand context.</span>
+              </div>
+            </div>
+
+            <div class="step">
+              <div class="step-badge">3</div>
+              <div>
+                <strong>Decision support</strong>
+                <span>It then generates suggestions, summaries, or actions that help humans complete tasks more efficiently.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <img class="tech-image" src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1200&q=80" alt="Artificial intelligence systems and data processing" />
+      </div>
+    </section>
+
+    <section class="section" id="generation">
+      <div class="section-title-row">
+        <div class="section-title">The 5th generation of computers</div>
+        <div class="section-sub">AI and intelligent systems</div>
+      </div>
+
+      <div class="split-layout">
+        <img class="tech-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80" alt="Future computing and AI systems" />
+
+        <div class="split-copy">
+          <h3>AI is often linked with the fifth generation of computing.</h3>
+          <p>
+            The fifth generation of computers is associated with intelligent systems, machine learning, natural language processing,
+            and more advanced interaction between humans and machines. In this generation, computers are not only used to process numbers,
+            but also to understand language, detect patterns, and support decision-making in real-world tasks.
+          </p>
+          <p>
+            This makes AI especially relevant to office administration, where information flows constantly and tasks often involve communication,
+            scheduling, analysis, and coordination. AI helps turn large amounts of information into useful, practical actions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="relevance">
+      <div class="section-title-row">
+        <div class="section-title">Why AI is relevant</div>
+        <div class="section-sub">In everyday office work</div>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card">
+          <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Writing and content creation" />
+          <div class="feature-content">
+            <h4>Writing support</h4>
+            <p>
+              AI helps generate drafts, improve grammar, summarize meetings, and create clear communication for office teams.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=900&q=80" alt="Scheduling and planning" />
+          <div class="feature-content">
+            <h4>Scheduling and planning</h4>
+            <p>
+              It helps organize calendars, automate reminders, and reduce time spent coordinating meetings and tasks.
+            </p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Data and analytics" />
+          <div class="feature-content">
+            <h4>Data and analysis</h4>
+            <p>
+              AI can process large amounts of information quickly, turning raw data into insights and better decisions.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="sources">
+      <div class="section-title-row">
+        <div class="section-title">Sources</div>
+        <div class="section-sub">Reference-style citations</div>
+      </div>
+
+      <div class="citations-grid">
+        <article class="citation-box">
+          <strong>Source 01</strong>
+          <p>AI tools support office productivity by automating repetitive work and improving decision support in administrative tasks.</p>
+          <a href="https://www.researchgate.net/publication/416465433_The_Impact_of_AI-Based_Administrative_Tools_on_Decision-Making_Efficiency_in_Schools_The_Mediating_Role_of_Technology_Acceptance" target="_blank" rel="noopener">Open link page</a>
+        </article>
+
+        <article class="citation-box">
+          <strong>Source 02</strong>
+          <p>Machine learning and natural language processing are core technologies behind modern AI systems used in workplaces.</p>
+          <a href="https://www.ibm.com/think/topics/natural-language-processing" target="_blank" rel="noopener">Open link page</a>
+        </article>
+
+        <article class="citation-box">
+          <strong>Source 03</strong>
+          <p>Responsible AI use is important because human oversight, privacy, and fairness remain necessary in all workplace applications.</p>
+          <a href="https://www.microsoft.com/en-us/ai/responsible-ai" target="_blank" rel="noopener">Open link page</a>
+        </article>
+      </div>
     </section>
   </div>
 </body>
