@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Tools in Office Administration</title>
+  <title>AI Tools References | Research Prompt</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
     :root {
-      --bg-1: #040b16;
-      --bg-2: #0c1324;
-      --panel: rgba(12, 22, 36, 0.75);
-      --panel-border: rgba(94, 231, 255, 0.25);
-      --text: #ecfafe;
-      --muted: #adbed3;
-      --cyan: #57e6ff;
-      --blue: #6ea8fe;
-      --purple: #b197fc;
-      --green: #7ef2c0;
-      --orange: #ffbf69;
-      --shadow: 0 0 30px rgba(94, 231, 255, 0.28);
+      --bg: #edf4ff;
+      --bg-2: #dfeeff;
+      --card: rgba(255, 255, 255, 0.8);
+      --panel: #ffffff;
+      --line: #d9e7ff;
+      --primary: #1d4ed8;
+      --secondary: #3b82f6;
+      --text: #10233d;
+      --muted: #536d8a;
+      --shadow: 0 18px 44px rgba(29, 78, 216, 0.08);
+      --radius: 24px;
     }
 
     * { box-sizing: border-box; }
@@ -31,547 +30,534 @@
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      color: var(--text);
       background:
-        radial-gradient(circle at top left, rgba(94,231,255,0.12), transparent 25%),
-        radial-gradient(circle at bottom right, rgba(177,151,252,0.14), transparent 30%),
-        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(95, 157, 255, 0.08), transparent 28%),
+        linear-gradient(180deg, var(--bg), var(--bg-2));
+      color: var(--text);
       min-height: 100vh;
-      overflow-x: hidden;
       overflow-y: auto;
     }
 
-    .container {
-      width: min(1180px, calc(100% - 32px));
+    .page-shell {
+      width: min(1200px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 42px 0 80px;
+      padding: 32px 0 80px;
     }
 
     .topbar {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 28px;
-      padding: 18px 24px;
-      border: 1px solid var(--panel-border);
-      background: rgba(10, 18, 30, 0.7);
+      justify-content: space-between;
+      padding: 18px 22px;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--line);
       border-radius: 18px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
+      margin-bottom: 30px;
     }
 
     .brand {
-      font-family: 'Orbitron', sans-serif;
-      letter-spacing: 0.08em;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--cyan);
+      color: var(--primary);
     }
 
-    .back-link {
-      text-decoration: none;
-      color: var(--text);
-      padding: 10px 16px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.15);
-      transition: 0.25s ease;
-    }
-
-    .back-link:hover {
-      border-color: rgba(94,231,255,0.4);
-      background: rgba(94,231,255,0.05);
-    }
-
-    .hero-heading {
-      text-align: center;
-      margin: 24px auto 34px;
-      max-width: 1000px;
-    }
-
-    .hero-heading h1 {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 3rem);
-      line-height: 1.5;
-      letter-spacing: 0.02em;
-      color: #f5fbff;
-    }
-
-    .hero-heading p {
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 1.04rem;
-      line-height: 1.8;
-    }
-
-    .feature-banner {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 22px;
-      margin: 28px 0 30px;
+    .nav {
+      display: flex;
+      gap: 18px;
       align-items: center;
+      flex-wrap: wrap;
     }
 
-    .banner-copy,
-    .banner-visual {
-      background: rgba(10, 18, 32, 0.76);
-      border: 1px solid var(--panel-border);
-      border-radius: 24px;
+    .nav a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
       box-shadow: var(--shadow);
+      padding: 30px 26px;
+      margin-bottom: 28px;
+      position: relative;
       overflow: hidden;
     }
 
-    .banner-copy {
-      padding: 28px 24px;
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), #7dd3fc, #a78bfa);
     }
 
-    .banner-copy .eyebrow {
+    .eyebrow {
       display: inline-block;
-      font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      background: rgba(37, 99, 235, 0.08);
+      color: var(--primary);
+      border: 1px solid rgba(37, 99, 235, 0.12);
+      border-radius: 999px;
+      padding: 8px 14px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--cyan);
-      font-weight: 700;
-      margin-bottom: 12px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      margin-bottom: 16px;
     }
 
-    .banner-copy h2 {
-      margin: 0 0 12px;
-      font-size: clamp(1.8rem, 3vw, 2.7rem);
-      font-family: 'Orbitron', sans-serif;
-      line-height: 1.2;
-    }
-
-    .banner-copy p {
+    h1 {
       margin: 0;
+      font-size: clamp(2.4rem, 4vw, 4rem);
+      line-height: 1.02;
+      letter-spacing: -0.06em;
+    }
+
+    .hero-sub {
+      margin-top: 18px;
       color: var(--muted);
       line-height: 1.8;
+      max-width: 900px;
+      font-size: 1.03rem;
     }
 
-    .banner-visual img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      min-height: 270px;
-      object-fit: cover;
+    .section {
+      margin-top: 28px;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px 20px;
     }
 
-    .category {
-      margin-top: 40px;
-    }
-
-    .category-header {
+    .section-title-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-bottom: 18px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
 
-    .category-header h3 {
-      margin: 0;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.1rem;
+    .section-title {
+      font-size: 1.05rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--cyan);
+      color: var(--primary);
+      font-weight: 800;
     }
 
-    .category-header span {
-      font-size: 0.8rem;
+    .section-sub {
       color: var(--muted);
-      letter-spacing: 0.12em;
+      font-size: 0.9rem;
     }
 
-    .cards {
+    .reference-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .card {
-      position: relative;
-      border: 1px solid var(--panel-border);
-      background: rgba(10, 18, 32, 0.78);
-      border-radius: 22px;
-      padding: 0;
+    .ref-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
       overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-      box-shadow: inset 0 0 20px rgba(94,231,255,0.03);
+      box-shadow: 0 14px 22px rgba(35, 67, 128, 0.04);
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(94,231,255,0.5);
-      box-shadow: 0 0 30px rgba(94,231,255,0.18);
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0 auto auto 0;
+    .ref-image img {
       width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, var(--cyan), var(--purple));
-      z-index: 1;
-    }
-
-    .card-image img {
-      display: block;
-      width: 100%;
-      height: 180px;
+      height: 170px;
       object-fit: cover;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: block;
+      border-bottom: 1px solid var(--line);
     }
 
-    .card-content {
-      padding: 22px 18px 18px;
+    .ref-content {
+      padding: 18px 18px 20px;
     }
 
-    .icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      font-size: 1.6rem;
-      background: linear-gradient(135deg, rgba(94,231,255,0.18), rgba(177,151,252,0.18));
-      border: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 14px;
+    .ref-tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(29, 78, 216, 0.08);
+      color: var(--primary);
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    .card h2 {
+    .ref-card h3 {
       margin: 0 0 10px;
-      font-size: 1.2rem;
+      font-size: 1.22rem;
       color: var(--text);
     }
 
-    .card p {
-      margin: 0 0 16px;
+    .ref-card p {
+      margin: 0;
       color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.95rem;
+      line-height: 1.75;
     }
 
-    .card a {
+    .ref-card a {
       display: inline-block;
+      margin-top: 14px;
+      color: var(--primary);
       text-decoration: none;
       font-weight: 700;
-      color: var(--cyan);
-      transition: opacity 0.2s ease;
     }
 
-    .card a:hover {
-      opacity: 0.8;
+    .ref-card a:hover {
+      text-decoration: underline;
     }
 
-    @media (max-width: 820px) {
-      .feature-banner {
+    .note {
+      margin-top: 12px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.96rem;
+    }
+
+    @media (max-width: 960px) {
+      .reference-grid {
         grid-template-columns: 1fr;
       }
+    }
 
+    @media (max-width: 640px) {
       .topbar {
         flex-direction: column;
+        align-items: flex-start;
         gap: 12px;
+      }
+
+      .nav {
+        gap: 10px;
+      }
+
+      .hero {
+        padding: 22px 18px;
+      }
+
+      .section {
+        padding: 18px 16px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="topbar">
-      <div class="brand">Office AI</div>
-      <a href="index.html" class="back-link">← Back to Home</a>
-    </div>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="brand">AI REFERENCES</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="page2.html">Apps</a>
+        <a href="#writing">Writing</a>
+        <a href="#scheduling">Scheduling</a>
+        <a href="#data">Data</a>
+        <a href="#research">Research</a>
+        <a href="#support">Support</a>
+        <a href="#ethics">Ethics</a>
+      </nav>
+    </header>
 
-    <div class="hero-heading">
-      <h1>AI tools organized by the key features office teams rely on most.</h1>
-      <p>Explore writing, scheduling, data processing, research, customer service, and responsible AI adoption tools.</p>
-    </div>
+    <main class="hero">
+      <div class="eyebrow">Reference page</div>
+      <h1>Research references for AI tools in office administration.</h1>
+      <p class="hero-sub">
+        This page links the major AI tools discussed on the earlier pages to their official sources and resource pages.
+        It serves as a supporting reference list for the research and app categories presented in the project.
+      </p>
+    </main>
 
-    <section class="feature-banner">
-      <div class="banner-copy">
-        <span class="eyebrow">Workflow upgrade</span>
-        <h2>Smarter office systems for everyday productivity.</h2>
-        <p>
-          From writing and planning to data analysis and customer support, these AI-powered apps reduce repetitive work and improve efficiency across office operations.
-        </p>
+    <section class="section" id="writing">
+      <div class="section-title-row">
+        <div class="section-title">Writing</div>
+        <div class="section-sub">Communication & content tools</div>
       </div>
-      <div class="banner-visual">
-        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80" alt="Office team working with AI tools" />
-      </div>
-    </section>
 
-    <section class="category">
-      <div class="category-header">
-        <h3>Writing</h3>
-        <span>Communication & content</span>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Person writing on a laptop" />
+      <div class="reference-grid">
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Writing app reference" />
           </div>
-          <div class="card-content">
-            <div class="icon">✍️</div>
-            <h2>ChatGPT</h2>
-            <p>Generates polished emails, reports, meeting notes, and summaries to help teams work faster.</p>
-            <a href="https://chat.openai.com/" target="_blank" rel="noopener">Open ChatGPT →</a>
+          <div class="ref-content">
+            <span class="ref-tag">Writing</span>
+            <h3>ChatGPT</h3>
+            <p>AI writing assistant for drafting, summarizing, and reworking text for office tasks.</p>
+            <a href="https://chat.openai.com/" target="_blank" rel="noopener">Open official site →</a>
           </div>
         </article>
 
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" alt="Writing and editing content on a laptop" />
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" alt="Grammarly reference" />
           </div>
-          <div class="card-content">
-            <div class="icon">✍️</div>
-            <h2>Grammarly</h2>
-            <p>Helps teams write clearly, check grammar, and polish professional communication with confidence.</p>
-            <a href="https://www.grammarly.com/" target="_blank" rel="noopener">Open Grammarly →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Team brainstorming ideas" />
-          </div>
-          <div class="card-content">
-            <div class="icon">🧠</div>
-            <h2>Notion AI</h2>
-            <p>Summarizes notes, creates action items, and helps teams keep writing and documentation organized.</p>
-            <a href="https://www.notion.so/product/ai" target="_blank" rel="noopener">Open Notion AI →</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="category">
-      <div class="category-header">
-        <h3>Scheduling</h3>
-        <span>Coordination & planning</span>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=900&q=80" alt="Calendar scheduling and planning" />
-          </div>
-          <div class="card-content">
-            <div class="icon">📅</div>
-            <h2>Calendly</h2>
-            <p>Automates meeting scheduling and makes coordinating availability easier for teams and clients.</p>
-            <a href="https://www.calendly.com/" target="_blank" rel="noopener">Open Calendly →</a>
+          <div class="ref-content">
+            <span class="ref-tag">Writing</span>
+            <h3>Grammarly</h3>
+            <p>Writing assistant that checks grammar, tone, and clarity in professional communication.</p>
+            <a href="https://www.grammarly.com/" target="_blank" rel="noopener">Open official site →</a>
           </div>
         </article>
 
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80" alt="Planning a team schedule" />
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Notion AI reference" />
           </div>
-          <div class="card-content">
-            <div class="icon">🗓️</div>
-            <h2>Google Calendar</h2>
-            <p>Helps organize meetings, assign time blocks, and keep daily schedules aligned across teams.</p>
-            <a href="https://calendar.google.com/" target="_blank" rel="noopener">Open Google Calendar →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Project team planning and scheduling" />
-          </div>
-          <div class="card-content">
-            <div class="icon">✅</div>
-            <h2>Asana</h2>
-            <p>Tracks project deadlines, schedules tasks, and helps teams prioritize workloads with less confusion.</p>
-            <a href="https://asana.com/" target="_blank" rel="noopener">Open Asana →</a>
+          <div class="ref-content">
+            <span class="ref-tag">Writing</span>
+            <h3>Notion AI</h3>
+            <p>Workspace tool that creates summaries, notes, and organized content for teams.</p>
+            <a href="https://www.notion.so/product/ai" target="_blank" rel="noopener">Open official site →</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="category">
-      <div class="category-header">
-        <h3>Data Processing</h3>
-        <span>Analysis & insight</span>
+    <section class="section" id="scheduling">
+      <div class="section-title-row">
+        <div class="section-title">Scheduling</div>
+        <div class="section-sub">Planning & coordination</div>
       </div>
-      <div class="cards">
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Data dashboard and analytics" />
+
+      <div class="reference-grid">
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=900&q=80" alt="Calendly reference" />
           </div>
-          <div class="card-content">
-            <div class="icon">📊</div>
-            <h2>Microsoft Excel Copilot</h2>
-            <p>Helps analyze data, forecast trends, and produce better reports from large spreadsheets.</p>
-            <a href="https://www.microsoft.com/en-us/microsoft-365/excel" target="_blank" rel="noopener">Open Excel →</a>
+          <div class="ref-content">
+            <span class="ref-tag">Scheduling</span>
+            <h3>Calendly</h3>
+            <p>Meeting scheduling platform that automates time coordination and reduces manual planning work.</p>
+            <a href="https://www.calendly.com/" target="_blank" rel="noopener">Open official site →</a>
           </div>
         </article>
 
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Google sheets display" />
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80" alt="Asana reference" />
           </div>
-          <div class="card-content">
-            <div class="icon">📈</div>
-            <h2>Google Sheets AI</h2>
-            <p>Turns raw data into helpful summaries, formulas, and trend insights for fast decision-making.</p>
-            <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener">Open Google Sheets →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Dashboard and digital reporting" />
-          </div>
-          <div class="card-content">
-            <div class="icon">📉</div>
-            <h2>Airtable AI</h2>
-            <p>Helps organize data, automate workflows, and summarize project information across departments.</p>
-            <a href="https://www.airtable.com/" target="_blank" rel="noopener">Open Airtable →</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="category">
-      <div class="category-header">
-        <h3>Research</h3>
-        <span>Finding & summarizing information</span>
-      </div>
-      <div class="cards">
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Research team collaborating" />
-          </div>
-          <div class="card-content">
-            <div class="icon">🔎</div>
-            <h2>Perplexity</h2>
-            <p>Finds answers quickly, compares sources, and creates condensed research summaries for office tasks.</p>
-            <a href="https://www.perplexity.ai/" target="_blank" rel="noopener">Open Perplexity →</a>
+          <div class="ref-content">
+            <span class="ref-tag">Scheduling</span>
+            <h3>Asana</h3>
+            <p>Project management platform for task deadlines, team coordination, and workload planning.</p>
+            <a href="https://asana.com/" target="_blank" rel="noopener">Open official site →</a>
           </div>
         </article>
 
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" alt="Research and discovery session" />
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Google Calendar reference" />
           </div>
-          <div class="card-content">
-            <div class="icon">📚</div>
-            <h2>Elicit</h2>
-            <p>Helps researchers collect and compare evidence, findings, and relevant studies in a structured way.</p>
-            <a href="https://elicit.com/" target="_blank" rel="noopener">Open Elicit →</a>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" alt="Reading and reviewing information" />
-          </div>
-          <div class="card-content">
-            <div class="icon">🧾</div>
-            <h2>Consensus</h2>
-            <p>Summarizes academic and professional findings into clearer evidence-based insights for decision-makers.</p>
-            <a href="https://consensus.app/" target="_blank" rel="noopener">Open Consensus →</a>
+          <div class="ref-content">
+            <span class="ref-tag">Scheduling</span>
+            <h3>Google Calendar</h3>
+            <p>Daily scheduling and planning tool used to organize time, meetings, and shared team calendars.</p>
+            <a href="https://calendar.google.com/" target="_blank" rel="noopener">Open official site →</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="category">
-      <div class="category-header">
-        <h3>Customer Service</h3>
-        <span>Support & responsiveness</span>
+    <section class="section" id="data">
+      <div class="section-title-row">
+        <div class="section-title">Data processing</div>
+        <div class="section-sub">Analysis & reporting</div>
       </div>
-      <div class="cards">
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Customer support desk" />
+
+      <div class="reference-grid">
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Excel Copilot reference" />
           </div>
-          <div class="card-content">
-            <div class="icon">💬</div>
-            <h2>Zendesk</h2>
-            <p>Improves support workflows with AI triage, smart suggestions, and faster customer service handling.</p>
-            <a href="https://www.zendesk.com/" target="_blank" rel="noopener">Open Zendesk →</a>
+          <div class="ref-content">
+            <span class="ref-tag">Data</span>
+            <h3>Microsoft Excel Copilot</h3>
+            <p>AI-powered spreadsheet tool for organizing and analyzing office data faster.</p>
+            <a href="https://www.microsoft.com/en-us/microsoft-365/excel" target="_blank" rel="noopener">Open official site →</a>
           </div>
         </article>
 
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Support team communication" />
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Airtable reference" />
           </div>
-          <div class="card-content">
-            <div class="icon">📨</div>
-            <h2>Intercom</h2>
-            <p>Automates live chat and support conversations while helping teams respond faster and more consistently.</p>
-            <a href="https://www.intercom.com/" target="_blank" rel="noopener">Open Intercom →</a>
+          <div class="ref-content">
+            <span class="ref-tag">Data</span>
+            <h3>Airtable AI</h3>
+            <p>Database and workflow platform that organizes structured data and automates office tasks.</p>
+            <a href="https://www.airtable.com/" target="_blank" rel="noopener">Open official site →</a>
           </div>
         </article>
 
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=900&q=80" alt="Customer care workflow" />
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Google Sheets reference" />
           </div>
-          <div class="card-content">
-            <div class="icon">🎧</div>
-            <h2>Freshdesk</h2>
-            <p>Supports ticket management, workflow automation, and customer communication across service teams.</p>
-            <a href="https://www.freshworks.com/freshdesk/" target="_blank" rel="noopener">Open Freshdesk →</a>
+          <div class="ref-content">
+            <span class="ref-tag">Data</span>
+            <h3>Google Sheets</h3>
+            <p>Spreadsheet platform for data management, formulas, and team reporting.</p>
+            <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener">Open official site →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="research">
+      <div class="section-title-row">
+        <div class="section-title">Research</div>
+        <div class="section-sub">Finding & summarization</div>
+      </div>
+
+      <div class="reference-grid">
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Perplexity reference" />
+          </div>
+          <div class="ref-content">
+            <span class="ref-tag">Research</span>
+            <h3>Perplexity</h3>
+            <p>AI search and research tool that answers questions with source-based summaries.</p>
+            <a href="https://www.perplexity.ai/" target="_blank" rel="noopener">Open official site →</a>
+          </div>
+        </article>
+
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" alt="Elicit reference" />
+          </div>
+          <div class="ref-content">
+            <span class="ref-tag">Research</span>
+            <h3>Elicit</h3>
+            <p>Research assistant for summarizing evidence and comparing findings from academic literature.</p>
+            <a href="https://elicit.com/" target="_blank" rel="noopener">Open official site →</a>
+          </div>
+        </article>
+
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" alt="Consensus reference" />
+          </div>
+          <div class="ref-content">
+            <span class="ref-tag">Research</span>
+            <h3>Consensus</h3>
+            <p>Research discovery tool that finds consensus and evidence-backed summaries quickly.</p>
+            <a href="https://consensus.app/" target="_blank" rel="noopener">Open official site →</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section class="category">
-      <div class="category-header">
-        <h3>Responsible AI Adoption</h3>
-        <span>Ethics & governance</span>
+    <section class="section" id="support">
+      <div class="section-title-row">
+        <div class="section-title">Customer service</div>
+        <div class="section-sub">Support & response workflows</div>
       </div>
-      <div class="cards">
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80" alt="Responsible AI and ethics concept" />
+
+      <div class="reference-grid">
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Zendesk reference" />
           </div>
-          <div class="card-content">
-            <div class="icon">⚖️</div>
-            <h2>Responsible/Ethical use of AI</h2>
-            <p>Helps teams use AI ethically through governance, transparency, and risk-aware deployment decisions.</p>
-            <a href="https://warwick.ac.uk/fac/cross_fac/academic-development/ai/more/responsible-use/" target="_blank" rel="noopener">Open resource link →</a>
+          <div class="ref-content">
+            <span class="ref-tag">Support</span>
+            <h3>Zendesk</h3>
+            <p>Customer support platform with AI support tools for ticketing and faster service handling.</p>
+            <a href="https://www.zendesk.com/" target="_blank" rel="noopener">Open official site →</a>
           </div>
         </article>
 
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="AI governance discussion" />
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Intercom reference" />
           </div>
-          <div class="card-content">
-            <div class="icon">🔐</div>
-            <h2>IBM AI Ethics</h2>
-            <p>Focuses on trustworthy AI, policy frameworks, and more responsible implementation across organizations.</p>
-            <a href="https://www.ibm.com/artificial-intelligence" target="_blank" rel="noopener">Open IBM AI →</a>
+          <div class="ref-content">
+            <span class="ref-tag">Support</span>
+            <h3>Intercom</h3>
+            <p>Customer messaging and support platform with AI tools for automation and engagement.</p>
+            <a href="https://www.intercom.com/" target="_blank" rel="noopener">Open official site →</a>
           </div>
         </article>
 
-        <article class="card">
-          <div class="card-image">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Business leadership and AI strategy" />
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=900&q=80" alt="Freshdesk reference" />
           </div>
-          <div class="card-content">
-            <div class="icon">🛡️</div>
-            <h2>Google Responsible AI</h2>
-            <p>Shows how companies can align AI adoption with fairness, transparency, and accountability in practice.</p>
-            <a href="https://ai.google/responsibility/" target="_blank" rel="noopener">Open Google AI →</a>
+          <div class="ref-content">
+            <span class="ref-tag">Support</span>
+            <h3>Freshdesk</h3>
+            <p>Ticketing and support system for service teams with workflow automation capabilities.</p>
+            <a href="https://www.freshworks.com/freshdesk/" target="_blank" rel="noopener">Open official site →</a>
           </div>
         </article>
       </div>
     </section>
+
+    <section class="section" id="ethics">
+      <div class="section-title-row">
+        <div class="section-title">Responsible AI adoption</div>
+        <div class="section-sub">Ethics & governance</div>
+      </div>
+
+      <div class="reference-grid">
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80" alt="Responsible AI governance resource" />
+          </div>
+          <div class="ref-content">
+            <span class="ref-tag">Ethics</span>
+            <h3>Microsoft Responsible AI</h3>
+            <p>Resource on fairness, transparency, and responsible deployment of AI systems.</p>
+            <a href="https://www.microsoft.com/en-us/ai/responsible-ai" target="_blank" rel="noopener">Open official site →</a>
+          </div>
+        </article>
+
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="IBM AI ethics resource" />
+          </div>
+          <div class="ref-content">
+            <span class="ref-tag">Ethics</span>
+            <h3>IBM AI</h3>
+            <p>Information about trustworthy AI, governance, and ethical implementation in business environments.</p>
+            <a href="https://www.ibm.com/artificial-intelligence" target="_blank" rel="noopener">Open official site →</a>
+          </div>
+        </article>
+
+        <article class="ref-card">
+          <div class="ref-image">
+            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Google Responsible AI resource" />
+          </div>
+          <div class="ref-content">
+            <span class="ref-tag">Ethics</span>
+            <h3>Google Responsible AI</h3>
+            <p>Guidance on safe, fair, and accountable AI use in real-world business settings.</p>
+            <a href="https://ai.google/responsibility/" target="_blank" rel="noopener">Open official site →</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <p class="note">
+      This references page is designed to support the AI tools research, linking each app to official resources and related project categories.
+    </p>
   </div>
-  
-  
-  
-         <article class="citation-box">
-          <strong>Source 03</strong>
-          <p>Responsible AI adoption supports smoother workflow management, especially when combined with clear human oversight and accountability in office operations.</p>
-          <a href="https://mitsloan.mit.edu/ideas-made-to-matter/how-ai-reshaping-workflows-and-redefining-jobs" target="_blank" rel="noopener">View link reference<
+</body>
+</html>
