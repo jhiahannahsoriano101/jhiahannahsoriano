@@ -3,57 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI Tools References | Research Prompt</title>
+  <title>AI Tool Categories | Research Prompt</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
     :root {
       --bg: #edf4ff;
       --bg-2: #dfeeff;
-      --card: rgba(255, 255, 255, 0.8);
-      --panel: #ffffff;
+      --card: rgba(255,255,255,0.8);
+      --panel: #fff;
       --line: #d9e7ff;
       --primary: #1d4ed8;
       --secondary: #3b82f6;
       --text: #10233d;
       --muted: #536d8a;
-      --shadow: 0 18px 44px rgba(29, 78, 216, 0.08);
+      --shadow: 0 18px 44px rgba(29,78,216,0.08);
       --radius: 24px;
     }
 
     * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(95, 157, 255, 0.08), transparent 28%),
+        radial-gradient(circle at top left, rgba(37,99,235,0.08), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(95,157,255,0.08), transparent 28%),
         linear-gradient(180deg, var(--bg), var(--bg-2));
       color: var(--text);
-      min-height: 100vh;
-      overflow-y: auto;
     }
 
     .page-shell {
-      width: min(1200px, calc(100% - 32px));
+      width: min(1180px, calc(100% - 32px));
       margin: 0 auto;
       padding: 32px 0 80px;
     }
 
     .topbar {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 18px 22px;
+      align-items: center;
       background: rgba(255,255,255,0.6);
-      backdrop-filter: blur(8px);
       border: 1px solid var(--line);
       border-radius: 18px;
+      padding: 18px 22px;
       box-shadow: var(--shadow);
       margin-bottom: 30px;
     }
@@ -69,7 +61,6 @@
     .nav {
       display: flex;
       gap: 18px;
-      align-items: center;
       flex-wrap: wrap;
     }
 
@@ -77,76 +68,132 @@
       text-decoration: none;
       color: var(--muted);
       font-weight: 600;
-      transition: 0.2s ease;
-    }
-
-    .nav a:hover {
-      color: var(--primary);
     }
 
     .hero {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 26px;
+      margin-bottom: 30px;
+    }
+
+    .hero-main, .prompt-panel, .section {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 30px 26px;
-      margin-bottom: 28px;
-      position: relative;
-      overflow: hidden;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 5px;
-      background: linear-gradient(90deg, var(--primary), #7dd3fc, #a78bfa);
+    .hero-main {
+      padding: 34px 30px;
     }
 
     .eyebrow {
       display: inline-block;
-      background: rgba(37, 99, 235, 0.08);
-      color: var(--primary);
-      border: 1px solid rgba(37, 99, 235, 0.12);
-      border-radius: 999px;
       padding: 8px 14px;
+      background: rgba(37,99,235,0.08);
+      color: var(--primary);
+      border-radius: 999px;
+      font-size: 0.72rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      font-size: 0.72rem;
       font-weight: 800;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.4rem, 4vw, 4rem);
-      line-height: 1.02;
+      font-size: clamp(2.6rem, 4vw, 4.4rem);
+      line-height: 0.98;
       letter-spacing: -0.06em;
     }
 
     .hero-sub {
-      margin-top: 18px;
       color: var(--muted);
       line-height: 1.8;
-      max-width: 900px;
-      font-size: 1.03rem;
+      font-size: 1.04rem;
+      margin-top: 18px;
+      max-width: 720px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,0.7);
+    }
+
+    .prompt-panel {
+      padding: 24px 22px;
+    }
+
+    .prompt-box {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #f8fbff, #eef6ff);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .prompt-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .meta-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px 16px;
+    }
+
+    .meta-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .meta-card strong {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--primary);
+      letter-spacing: -0.05em;
     }
 
     .section {
       margin-top: 28px;
-      background: rgba(255,255,255,0.5);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 22px 20px;
+      padding: 24px 22px;
     }
 
     .section-title-row {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 20px;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
       flex-wrap: wrap;
     }
 
@@ -160,113 +207,78 @@
 
     .section-sub {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
     }
 
-    .reference-grid {
+    .category-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .ref-card {
+    .category-card {
       background: white;
       border: 1px solid var(--line);
       border-radius: 18px;
       overflow: hidden;
-      box-shadow: 0 14px 22px rgba(35, 67, 128, 0.04);
     }
 
-    .ref-image img {
+    .category-card img {
       width: 100%;
-      height: 170px;
+      height: 190px;
       object-fit: cover;
       display: block;
       border-bottom: 1px solid var(--line);
     }
 
-    .ref-content {
+    .category-content {
       padding: 18px 18px 20px;
     }
 
-    .ref-tag {
+    .category-tag {
       display: inline-block;
       margin-bottom: 10px;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(29, 78, 216, 0.08);
+      background: rgba(29,78,216,0.08);
       color: var(--primary);
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
     }
 
-    .ref-card h3 {
+    .category-card h3 {
       margin: 0 0 10px;
-      font-size: 1.22rem;
-      color: var(--text);
+      font-size: 1.18rem;
     }
 
-    .ref-card p {
+    .category-card p {
       margin: 0;
       color: var(--muted);
       line-height: 1.75;
     }
 
-    .ref-card a {
+    .category-card a {
       display: inline-block;
       margin-top: 14px;
       color: var(--primary);
-      text-decoration: none;
       font-weight: 700;
+      text-decoration: none;
     }
 
-    .ref-card a:hover {
-      text-decoration: underline;
-    }
-
-    .note {
-      margin-top: 12px;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 0.96rem;
-    }
-
-    @media (max-width: 960px) {
-      .reference-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .topbar {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-      }
-
-      .nav {
-        gap: 10px;
-      }
-
-      .hero {
-        padding: 22px 18px;
-      }
-
-      .section {
-        padding: 18px 16px;
-      }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .category-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="page-shell">
     <header class="topbar">
-      <div class="brand">AI REFERENCES</div>
+      <div class="brand">Office AI</div>
       <nav class="nav">
         <a href="index.html">Home</a>
-        <a href="page2.html">Apps</a>
         <a href="#writing">Writing</a>
         <a href="#scheduling">Scheduling</a>
         <a href="#data">Data</a>
@@ -277,54 +289,68 @@
     </header>
 
     <main class="hero">
-      <div class="eyebrow">Reference page</div>
-      <h1>Research references for AI tools in office administration.</h1>
-      <p class="hero-sub">
-        This page links the major AI tools discussed on the earlier pages to their official sources and resource pages.
-        It serves as a supporting reference list for the research and app categories presented in the project.
-      </p>
+      <section class="hero-main">
+        <div class="eyebrow">Research prompt</div>
+        <h1>AI app categories used in office administration.</h1>
+        <p class="hero-sub">This page organizes commonly used AI tools by their main function in office workflows, including writing, scheduling, data processing, research, customer service, and ethical adoption.</p>
+        <div class="cta-row">
+          <a href="index.html" class="btn btn-secondary">Back to home</a>
+        </div>
+      </section>
+
+      <aside class="prompt-panel">
+        <div class="prompt-box">
+          <div class="prompt-label">Prompt</div>
+          <p>What are the AI-powered tools offices use most often to improve communication, reduce administrative workload, and support smarter decision-making?</p>
+        </div>
+        <div class="meta-grid">
+          <div class="meta-card">
+            <div class="meta-label">Categories</div>
+            <strong>6</strong>
+            <span>Core themes</span>
+          </div>
+          <div class="meta-card">
+            <div class="meta-label">Purpose</div>
+            <strong>High</strong>
+            <span>Work efficiency</span>
+          </div>
+        </div>
+      </aside>
     </main>
 
     <section class="section" id="writing">
       <div class="section-title-row">
         <div class="section-title">Writing</div>
-        <div class="section-sub">Communication & content tools</div>
+        <div class="section-sub">Communication & content</div>
       </div>
-
-      <div class="reference-grid">
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80" alt="Writing app reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Writing</span>
+      <div class="category-grid">
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=900&q=80" alt="AI writing and coding on a laptop" />
+          <div class="category-content">
+            <span class="category-tag">Writing</span>
             <h3>ChatGPT</h3>
-            <p>AI writing assistant for drafting, summarizing, and reworking text for office tasks.</p>
-            <a href="https://chat.openai.com/" target="_blank" rel="noopener">Open official site →</a>
+            <p>Generates polished emails, reports, meeting notes, and summaries to help teams work faster.</p>
+            <a href="https://chat.openai.com/" target="_blank" rel="noopener">Open ChatGPT →</a>
           </div>
         </article>
 
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" alt="Grammarly reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Writing</span>
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-5YuGRyt7nWQ?auto=format&fit=crop&w=900&q=80" alt="Writing and editing content on a desk" />
+          <div class="category-content">
+            <span class="category-tag">Writing</span>
             <h3>Grammarly</h3>
-            <p>Writing assistant that checks grammar, tone, and clarity in professional communication.</p>
-            <a href="https://www.grammarly.com/" target="_blank" rel="noopener">Open official site →</a>
+            <p>Helps teams write clearly, check grammar, and polish professional communication with confidence.</p>
+            <a href="https://www.grammarly.com/" target="_blank" rel="noopener">Open Grammarly →</a>
           </div>
         </article>
 
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" alt="Notion AI reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Writing</span>
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Team brainstorming ideas" />
+          <div class="category-content">
+            <span class="category-tag">Writing</span>
             <h3>Notion AI</h3>
-            <p>Workspace tool that creates summaries, notes, and organized content for teams.</p>
-            <a href="https://www.notion.so/product/ai" target="_blank" rel="noopener">Open official site →</a>
+            <p>Summarizes notes, creates action items, and helps teams keep writing and documentation organized.</p>
+            <a href="https://www.notion.so/product/ai" target="_blank" rel="noopener">Open Notion AI →</a>
           </div>
         </article>
       </div>
@@ -333,43 +359,36 @@
     <section class="section" id="scheduling">
       <div class="section-title-row">
         <div class="section-title">Scheduling</div>
-        <div class="section-sub">Planning & coordination</div>
+        <div class="section-sub">Coordination & planning</div>
       </div>
-
-      <div class="reference-grid">
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=900&q=80" alt="Calendly reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Scheduling</span>
+      <div class="category-grid">
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=900&q=80" alt="Calendar scheduling and planning" />
+          <div class="category-content">
+            <span class="category-tag">Scheduling</span>
             <h3>Calendly</h3>
-            <p>Meeting scheduling platform that automates time coordination and reduces manual planning work.</p>
-            <a href="https://www.calendly.com/" target="_blank" rel="noopener">Open official site →</a>
+            <p>Automates meeting scheduling and makes coordinating availability easier for teams and clients.</p>
+            <a href="https://www.calendly.com/" target="_blank" rel="noopener">Open Calendly →</a>
           </div>
         </article>
 
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80" alt="Asana reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Scheduling</span>
-            <h3>Asana</h3>
-            <p>Project management platform for task deadlines, team coordination, and workload planning.</p>
-            <a href="https://asana.com/" target="_blank" rel="noopener">Open official site →</a>
-          </div>
-        </article>
-
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Google Calendar reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Scheduling</span>
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80" alt="Calendar and time management" />
+          <div class="category-content">
+            <span class="category-tag">Scheduling</span>
             <h3>Google Calendar</h3>
-            <p>Daily scheduling and planning tool used to organize time, meetings, and shared team calendars.</p>
-            <a href="https://calendar.google.com/" target="_blank" rel="noopener">Open official site →</a>
+            <p>Helps organize meetings, assign time blocks, and keep daily schedules aligned across teams.</p>
+            <a href="https://calendar.google.com/" target="_blank" rel="noopener">Open Google Calendar →</a>
+          </div>
+        </article>
+
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80" alt="Project planning and task management" />
+          <div class="category-content">
+            <span class="category-tag">Scheduling</span>
+            <h3>Asana</h3>
+            <p>Tracks project deadlines, schedules tasks, and helps teams prioritize workloads with less confusion.</p>
+            <a href="https://asana.com/" target="_blank" rel="noopener">Open Asana →</a>
           </div>
         </article>
       </div>
@@ -377,44 +396,37 @@
 
     <section class="section" id="data">
       <div class="section-title-row">
-        <div class="section-title">Data processing</div>
-        <div class="section-sub">Analysis & reporting</div>
+        <div class="section-title">Data Processing</div>
+        <div class="section-sub">Analysis & insight</div>
       </div>
-
-      <div class="reference-grid">
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Excel Copilot reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Data</span>
+      <div class="category-grid">
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="Data dashboard and analytics" />
+          <div class="category-content">
+            <span class="category-tag">Data</span>
             <h3>Microsoft Excel Copilot</h3>
-            <p>AI-powered spreadsheet tool for organizing and analyzing office data faster.</p>
-            <a href="https://www.microsoft.com/en-us/microsoft-365/excel" target="_blank" rel="noopener">Open official site →</a>
+            <p>Helps analyze data, forecast trends, and produce better reports from large spreadsheets.</p>
+            <a href="https://www.microsoft.com/en-us/microsoft-365/excel" target="_blank" rel="noopener">Open Excel →</a>
           </div>
         </article>
 
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Airtable reference" />
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=900&q=80" alt="Spreadsheet and business data processing" />
+          <div class="category-content">
+            <span class="category-tag">Data</span>
+            <h3>Google Sheets AI</h3>
+            <p>Turns raw data into helpful summaries, formulas, and trend insights for fast decision-making.</p>
+            <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener">Open Google Sheets →</a>
           </div>
-          <div class="ref-content">
-            <span class="ref-tag">Data</span>
+        </article>
+
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Database management and workflow organization" />
+          <div class="category-content">
+            <span class="category-tag">Data</span>
             <h3>Airtable AI</h3>
-            <p>Database and workflow platform that organizes structured data and automates office tasks.</p>
-            <a href="https://www.airtable.com/" target="_blank" rel="noopener">Open official site →</a>
-          </div>
-        </article>
-
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Google Sheets reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Data</span>
-            <h3>Google Sheets</h3>
-            <p>Spreadsheet platform for data management, formulas, and team reporting.</p>
-            <a href="https://www.google.com/sheets/about/" target="_blank" rel="noopener">Open official site →</a>
+            <p>Helps organize data, automate workflows, and summarize project information across departments.</p>
+            <a href="https://www.airtable.com/" target="_blank" rel="noopener">Open Airtable →</a>
           </div>
         </article>
       </div>
@@ -423,43 +435,36 @@
     <section class="section" id="research">
       <div class="section-title-row">
         <div class="section-title">Research</div>
-        <div class="section-sub">Finding & summarization</div>
+        <div class="section-sub">Finding & summarizing information</div>
       </div>
-
-      <div class="reference-grid">
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="Perplexity reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Research</span>
+      <div class="category-grid">
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80" alt="Search and research concept" />
+          <div class="category-content">
+            <span class="category-tag">Research</span>
             <h3>Perplexity</h3>
-            <p>AI search and research tool that answers questions with source-based summaries.</p>
-            <a href="https://www.perplexity.ai/" target="_blank" rel="noopener">Open official site →</a>
+            <p>Finds answers quickly, compares sources, and creates condensed research summaries for office teams.</p>
+            <a href="https://www.perplexity.ai/" target="_blank" rel="noopener">Open Perplexity →</a>
           </div>
         </article>
 
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" alt="Elicit reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Research</span>
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=80" alt="Academic research and study analysis" />
+          <div class="category-content">
+            <span class="category-tag">Research</span>
             <h3>Elicit</h3>
-            <p>Research assistant for summarizing evidence and comparing findings from academic literature.</p>
-            <a href="https://elicit.com/" target="_blank" rel="noopener">Open official site →</a>
+            <p>Helps researchers collect and compare evidence, findings, and relevant studies in a structured way.</p>
+            <a href="https://elicit.com/" target="_blank" rel="noopener">Open Elicit →</a>
           </div>
         </article>
 
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" alt="Consensus reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Research</span>
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" alt="Research reading and document review" />
+          <div class="category-content">
+            <span class="category-tag">Research</span>
             <h3>Consensus</h3>
-            <p>Research discovery tool that finds consensus and evidence-backed summaries quickly.</p>
-            <a href="https://consensus.app/" target="_blank" rel="noopener">Open official site →</a>
+            <p>Summarizes academic and professional findings into clearer evidence-based insights for decision-makers.</p>
+            <a href="https://consensus.app/" target="_blank" rel="noopener">Open Consensus →</a>
           </div>
         </article>
       </div>
@@ -467,44 +472,37 @@
 
     <section class="section" id="support">
       <div class="section-title-row">
-        <div class="section-title">Customer service</div>
-        <div class="section-sub">Support & response workflows</div>
+        <div class="section-title">Customer Service</div>
+        <div class="section-sub">Support & responsiveness</div>
       </div>
-
-      <div class="reference-grid">
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Zendesk reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Support</span>
+      <div class="category-grid">
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="Customer support desk and service team" />
+          <div class="category-content">
+            <span class="category-tag">Support</span>
             <h3>Zendesk</h3>
-            <p>Customer support platform with AI support tools for ticketing and faster service handling.</p>
-            <a href="https://www.zendesk.com/" target="_blank" rel="noopener">Open official site →</a>
+            <p>Improves support workflows with AI triage, smart suggestions, and faster customer service handling.</p>
+            <a href="https://www.zendesk.com/" target="_blank" rel="noopener">Open Zendesk →</a>
           </div>
         </article>
 
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Intercom reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Support</span>
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Live chat and digital communication" />
+          <div class="category-content">
+            <span class="category-tag">Support</span>
             <h3>Intercom</h3>
-            <p>Customer messaging and support platform with AI tools for automation and engagement.</p>
-            <a href="https://www.intercom.com/" target="_blank" rel="noopener">Open official site →</a>
+            <p>Automates live chat and support conversations while helping teams respond faster and more consistently.</p>
+            <a href="https://www.intercom.com/" target="_blank" rel="noopener">Open Intercom →</a>
           </div>
         </article>
 
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?auto=format&fit=crop&w=900&q=80" alt="Freshdesk reference" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Support</span>
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80" alt="Help desk and support dashboard" />
+          <div class="category-content">
+            <span class="category-tag">Support</span>
             <h3>Freshdesk</h3>
-            <p>Ticketing and support system for service teams with workflow automation capabilities.</p>
-            <a href="https://www.freshworks.com/freshdesk/" target="_blank" rel="noopener">Open official site →</a>
+            <p>Supports ticket management, workflow automation, and customer communication across service teams.</p>
+            <a href="https://www.freshworks.com/freshdesk/" target="_blank" rel="noopener">Open Freshdesk →</a>
           </div>
         </article>
       </div>
@@ -512,52 +510,52 @@
 
     <section class="section" id="ethics">
       <div class="section-title-row">
-        <div class="section-title">Responsible AI adoption</div>
+        <div class="section-title">Responsible AI Adoption</div>
         <div class="section-sub">Ethics & governance</div>
       </div>
+      <div class="category-grid">
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80" alt="Responsible AI and ethical technology concept" />
+          <div class="category-content">
+            <span class="category-tag">Ethics</span>
+            <h3>Responsible AI</h3>
+            <p>Ethical AI practices help offices reduce bias, improve transparency, protect data, and use AI responsibly.</p>
 
-      <div class="reference-grid">
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80" alt="Responsible AI governance resource" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Ethics</span>
-            <h3>Microsoft Responsible AI</h3>
-            <p>Resource on fairness, transparency, and responsible deployment of AI systems.</p>
-            <a href="https://www.microsoft.com/en-us/ai/responsible-ai" target="_blank" rel="noopener">Open official site →</a>
+            <div style="margin: 12px 0 14px;">
+              <strong style="display:block; margin-bottom:8px; color: var(--primary); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;">Ethics subtopics</strong>
+              <ul style="margin:0; padding-left:18px; color: var(--muted); line-height:1.8;">
+                <li>Fairness</li>
+                <li>Transparency</li>
+                <li>Privacy</li>
+                <li>Human oversight</li>
+              </ul>
+            </div>
+
+            <a href="https://github.com/jhiahannahsoriano101/jhiahannahsoriano" target="_blank" rel="noopener">Open link →</a>
           </div>
         </article>
 
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="IBM AI ethics resource" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Ethics</span>
-            <h3>IBM AI</h3>
-            <p>Information about trustworthy AI, governance, and ethical implementation in business environments.</p>
-            <a href="https://www.ibm.com/artificial-intelligence" target="_blank" rel="noopener">Open official site →</a>
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="AI governance discussion" />
+          <div class="category-content">
+            <span class="category-tag">Ethics</span>
+            <h3>IBM AI Ethics</h3>
+            <p>Focuses on trustworthy AI, policy frameworks, and more responsible implementation across organizations.</p>
+            <a href="https://www.ibm.com/artificial-intelligence" target="_blank" rel="noopener">Open IBM AI →</a>
           </div>
         </article>
 
-        <article class="ref-card">
-          <div class="ref-image">
-            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Google Responsible AI resource" />
-          </div>
-          <div class="ref-content">
-            <span class="ref-tag">Ethics</span>
+        <article class="category-card">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Business leadership and AI strategy" />
+          <div class="category-content">
+            <span class="category-tag">Ethics</span>
             <h3>Google Responsible AI</h3>
-            <p>Guidance on safe, fair, and accountable AI use in real-world business settings.</p>
-            <a href="https://ai.google/responsibility/" target="_blank" rel="noopener">Open official site →</a>
+            <p>Shows how companies can align AI adoption with fairness, transparency, and accountability in practice.</p>
+            <a href="https://ai.google/responsibility/" target="_blank" rel="noopener">Open Google AI →</a>
           </div>
         </article>
       </div>
     </section>
-
-    <p class="note">
-      This references page is designed to support the AI tools research, linking each app to official resources and related project categories.
-    </p>
   </div>
 </body>
-</html> 
+</html>
