@@ -10,36 +10,27 @@
     :root {
       --bg: #edf4ff;
       --bg-2: #dfeeff;
-      --card: rgba(255, 255, 255, 0.8);
-      --panel: #ffffff;
+      --card: rgba(255,255,255,0.8);
+      --panel: #fff;
       --line: #d9e7ff;
       --primary: #1d4ed8;
-      --primary-2: #2563eb;
       --secondary: #3b82f6;
       --text: #10233d;
       --muted: #536d8a;
-      --success: #1a9d75;
-      --warning: #f59e0b;
-      --shadow: 0 18px 44px rgba(29, 78, 216, 0.08);
+      --shadow: 0 18px 44px rgba(29,78,216,0.08);
       --radius: 24px;
     }
 
     * { box-sizing: border-box; }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(95, 157, 255, 0.08), transparent 28%),
+        radial-gradient(circle at top left, rgba(37,99,235,0.08), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(95,157,255,0.08), transparent 28%),
         linear-gradient(180deg, var(--bg), var(--bg-2));
       color: var(--text);
-      min-height: 100vh;
-      overflow-y: auto;
     }
 
     .page-shell {
@@ -50,18 +41,22 @@
 
     .topbar {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      gap: 20px;
       padding: 18px 22px;
+      margin-bottom: 30px;
       background: rgba(255,255,255,0.6);
-      backdrop-filter: blur(8px);
       border: 1px solid var(--line);
       border-radius: 18px;
       box-shadow: var(--shadow);
-      margin-bottom: 30px;
     }
 
     .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 120px;
       font-size: 0.8rem;
       font-weight: 800;
       letter-spacing: 0.16em;
@@ -71,8 +66,9 @@
 
     .nav {
       display: flex;
-      gap: 18px;
       align-items: center;
+      justify-content: flex-end;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
@@ -80,22 +76,16 @@
       text-decoration: none;
       color: var(--muted);
       font-weight: 600;
-      transition: 0.2s ease;
-    }
-
-    .nav a:hover {
-      color: var(--primary);
     }
 
     .hero {
       display: grid;
       grid-template-columns: 1.25fr 0.75fr;
       gap: 26px;
-      margin-bottom: 30px;
+      margin-bottom: 34px;
     }
 
-    .hero-main,
-    .prompt-panel {
+    .hero-main, .prompt-panel, .section, .resource-box {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -104,28 +94,17 @@
 
     .hero-main {
       padding: 34px 30px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-main::before {
-      content: "";
-      position: absolute;
-      inset: 0 0 auto 0;
-      height: 5px;
-      background: linear-gradient(90deg, var(--primary), #7dd3fc, #a78bfa);
     }
 
     .eyebrow {
       display: inline-block;
-      background: rgba(37, 99, 235, 0.08);
-      color: var(--primary);
-      border: 1px solid rgba(37, 99, 235, 0.12);
-      border-radius: 999px;
       padding: 8px 14px;
+      background: rgba(37,99,235,0.08);
+      color: var(--primary);
+      border-radius: 999px;
+      font-size: 0.72rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      font-size: 0.72rem;
       font-weight: 800;
       margin-bottom: 18px;
     }
@@ -135,7 +114,6 @@
       font-size: clamp(2.6rem, 4vw, 4.4rem);
       line-height: 0.98;
       letter-spacing: -0.06em;
-      color: var(--text);
     }
 
     .hero-sub {
@@ -164,6 +142,12 @@
       transition: 0.2s ease;
     }
 
+    .btn-secondary {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,0.7);
+    }
+
     .btn-primary {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
       color: white;
@@ -174,12 +158,6 @@
       transform: translateY(-1px);
     }
 
-    .btn-secondary {
-      border: 1px solid var(--line);
-      color: var(--text);
-      background: rgba(255,255,255,0.7);
-    }
-
     .prompt-panel {
       padding: 24px 22px;
     }
@@ -188,7 +166,7 @@
       border: 1px solid var(--line);
       background: linear-gradient(180deg, #f8fbff, #eef6ff);
       border-radius: 18px;
-      padding: 18px 18px 16px;
+      padding: 18px;
     }
 
     .prompt-label {
@@ -245,10 +223,6 @@
 
     .section {
       margin-top: 28px;
-      background: rgba(255,255,255,0.5);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
       padding: 24px 22px;
     }
 
@@ -337,12 +311,60 @@
       text-decoration: underline;
     }
 
+    .resource-box {
+      margin-top: 28px;
+      padding: 26px 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(240,246,255,0.9));
+    }
+
+    .resource-box h3 {
+      margin: 0 0 12px;
+      font-size: 1.4rem;
+    }
+
+    .resource-box p {
+      margin: 0 0 16px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .resource-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .resource-link {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px 18px;
+    }
+
+    .resource-link strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    .resource-link a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .resource-link a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
       }
 
-      .category-grid {
+      .category-grid,
+      .resource-links {
         grid-template-columns: 1fr;
       }
     }
@@ -351,19 +373,10 @@
       .topbar {
         flex-direction: column;
         align-items: flex-start;
-        gap: 12px;
       }
 
       .nav {
-        gap: 12px;
-      }
-
-      .hero-main {
-        padding: 24px 18px;
-      }
-
-      .section {
-        padding: 18px 16px;
+        justify-content: flex-start;
       }
     }
   </style>
@@ -391,11 +404,13 @@
           This page organizes commonly used AI tools by their main function in office workflows, including writing,
           scheduling, data processing, research, customer service, and ethical adoption.
         </p>
-          <div class="cta-row">
-         <a href="index.html" class="btn btn-secondary">Back to home</a>
+
+        <div class="cta-row">
+          <a href="index.html" class="btn btn-secondary">Back to home</a>
           <a href="page3.html" class="btn btn-primary">Read more</a>
-       </div>
-           
+        </div>
+      </section>
+
       <aside class="prompt-panel">
         <div class="prompt-box">
           <div class="prompt-label">Prompt</div>
@@ -438,7 +453,7 @@
         </article>
 
         <article class="category-card">
-          <img src=https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80 />p
+          <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=900&q=80" alt="Writing and editing content on a desk" />
           <div class="category-content">
             <span class="category-tag">Writing</span>
             <h3>Grammarly</h3>
@@ -636,9 +651,7 @@
               </ul>
             </div>
 
-            <a href="https://github.com/jhiahannahsoriano101/jhiahannahsoriano" target="_blank" rel="noopener">
-              Open link →
-            </a>
+            <a href="https://github.com/jhiahannahsoriano101/jhiahannahsoriano" target="_blank" rel="noopener">Open link →</a>
           </div>
         </article>
 
@@ -661,6 +674,28 @@
             <a href="https://ai.google/responsibility/" target="_blank" rel="noopener">Open Google AI →</a>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section class="resource-box" id="better-links">
+      <h3>Better links to explore</h3>
+      <p>Here are some useful, trusted resources for learning more about AI tools, business technology, and ethical use.</p>
+
+      <div class="resource-links">
+        <div class="resource-link">
+          <strong>Microsoft AI</strong>
+          <a href="https://www.microsoft.com/en-us/ai" target="_blank" rel="noopener">Visit Microsoft AI</a>
+        </div>
+
+        <div class="resource-link">
+          <strong>IBM AI</strong>
+          <a href="https://www.ibm.com/artificial-intelligence" target="_blank" rel="noopener">Visit IBM AI</a>
+        </div>
+
+        <div class="resource-link">
+          <strong>IT News</strong>
+          <a href="https://www.reuters.com/technology/" target="_blank" rel="noopener">Visit IT News</a>
+        </div>
       </div>
     </section>
   </div>
