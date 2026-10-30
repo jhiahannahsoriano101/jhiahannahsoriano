@@ -85,7 +85,7 @@
       margin-bottom: 30px;
     }
 
-    .hero-main, .prompt-panel, .section, .news-box {
+    .hero-main, .prompt-panel, .popular-tools, .advantages-section, .news-box {
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -210,7 +210,7 @@
       letter-spacing: -0.05em;
     }
 
-    .section {
+    .popular-tools {
       margin-top: 28px;
       padding: 24px 22px;
     }
@@ -220,7 +220,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 16px;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
       flex-wrap: wrap;
     }
 
@@ -237,40 +237,114 @@
       font-size: 0.92rem;
     }
 
-    .tool-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .tool-grid {
       display: grid;
-      gap: 14px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
     }
 
-    .tool-item {
+    .tool-card {
       background: rgba(255,255,255,0.8);
       border: 1px solid var(--line);
       border-radius: 18px;
-      padding: 18px 20px;
+      padding: 20px 18px;
+      box-shadow: 0 10px 20px rgba(29, 78, 216, 0.04);
     }
 
-    .tool-item strong {
-      display: block;
-      font-size: 1.12rem;
-      margin-bottom: 6px;
+    .tool-badge {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 10px;
+      background: rgba(29, 78, 216, 0.08);
+      color: var(--primary);
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tool-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
       color: var(--text);
     }
 
-    .tool-item span {
+    .tool-card p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .tool-card a {
+      display: inline-block;
       color: var(--primary);
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      text-decoration: none;
       font-weight: 700;
     }
 
-    .tool-item p {
-      margin: 8px 0 0;
+    .tool-card a:hover {
+      text-decoration: underline;
+    }
+
+    .advantages-section {
+      margin-top: 28px;
+      padding: 24px 22px;
+    }
+
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .advantage-card {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px 18px;
+    }
+
+    .advantage-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .advantage-card ul {
+      margin: 0;
+      padding-left: 18px;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.8;
+    }
+
+    .advantage-card li {
+      margin-bottom: 6px;
+    }
+
+    .citation-box {
+      margin-top: 18px;
+      padding: 16px 18px;
+      background: rgba(29, 78, 216, 0.04);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+    }
+
+    .citation-box p {
+      margin: 0 0 8px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .citation-box a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .citation-box a:hover {
+      text-decoration: underline;
     }
 
     .news-box {
@@ -300,6 +374,10 @@
       .hero {
         grid-template-columns: 1fr;
       }
+
+      .tool-grid {
+        grid-template-columns: 1fr 1fr;
+      }
     }
 
     @media (max-width: 640px) {
@@ -311,6 +389,11 @@
       .nav {
         justify-content: flex-start;
       }
+
+      .tool-grid,
+      .advantages-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -321,7 +404,6 @@
       <nav class="nav">
         <a href="index.html">Home</a>
         <a href="page2.html">Page 2</a>
-        <a href="#tools">Tools</a>
         <a href="#news">IT News</a>
       </nav>
     </header>
@@ -331,7 +413,7 @@
         <div class="eyebrow">Office productivity</div>
         <h1>AI tools help teams work smarter, faster, and with less admin pressure.</h1>
         <p class="hero-sub">
-          Administrative work often slows down employees with repetitive tasks, manual reporting, scheduling, and communication. AI tools reduce these demands and create more time for decisions, planning, and customer support.
+          Administrative work often slows down employees with repetitive tasks, manual reporting, scheduling, and communication. AI tools reduce these demands and create more time for decisions, strategy, and customer focus.
         </p>
 
         <div class="cta-row">
@@ -364,55 +446,77 @@
       </aside>
     </main>
 
-    <section class="section" id="tools">
+    <section class="popular-tools" id="tools">
       <div class="section-title-row">
-        <div class="section-title">Popular AI office tools</div>
-        <div class="section-sub">Used across departments</div>
+        <div class="section-title">More Popular AI Tools</div>
+        <div class="section-sub">Widely used for work and productivity</div>
       </div>
 
-      <ul class="tool-list">
-        <li class="tool-item">
-          <span>Writing</span>
-          <strong>ChatGPT</strong>
-          <p>Helps generate emails, reports, meeting notes, and summaries so teams can work faster and focus on decision-making.</p>
-        </li>
+      <div class="tool-grid">
+        <article class="tool-card">
+          <div class="tool-badge">Search + AI</div>
+          <h3>Google Gemini</h3>
+          <p>Helps with research, brainstorming, summaries, and quick answers using Google’s AI tools and search ecosystem.</p>
+          <a href="https://gemini.google.com/" target="_blank" rel="noopener">Open link</a>
+        </article>
 
-        <li class="tool-item">
-          <span>Writing</span>
-          <strong>Grammarly</strong>
-          <p>Improves clarity, grammar, and tone in professional communication before messages are sent to colleagues or clients.</p>
-        </li>
+        <article class="tool-card">
+          <div class="tool-badge">Writing</div>
+          <h3>ChatGPT</h3>
+          <p>Popular for writing emails, creating reports, drafting ideas, and simplifying complex information for work tasks.</p>
+          <a href="https://chat.openai.com/" target="_blank" rel="noopener">Open link</a>
+        </article>
 
-        <li class="tool-item">
-          <span>Research</span>
-          <strong>Perplexity</strong>
-          <p>Finds answers quickly, compares sources, and gives concise summaries to support planning and research tasks.</p>
-        </li>
+        <article class="tool-card">
+          <div class="tool-badge">Productivity</div>
+          <h3>Microsoft Copilot</h3>
+          <p>Works inside Microsoft 365 apps to help with documents, presentations, spreadsheets, and daily office workflows.</p>
+          <a href="https://copilot.microsoft.com/" target="_blank" rel="noopener">Open link</a>
+        </article>
 
-        <li class="tool-item">
-          <span>Scheduling</span>
-          <strong>Calendly</strong>
-          <p>Reduces scheduling back-and-forth by allowing teams and clients to book meetings based on availability in real time.</p>
-        </li>
+        <article class="tool-card">
+          <div class="tool-badge">Research</div>
+          <h3>Perplexity</h3>
+          <p>Useful for fast web research, fact-checking, and pulling concise answers from multiple sources in one place.</p>
+          <a href="https://www.perplexity.ai/" target="_blank" rel="noopener">Open link</a>
+        </article>
+      </div>
+    </section>
 
-        <li class="tool-item">
-          <span>Data</span>
-          <strong>Microsoft Excel Copilot</strong>
-          <p>Helps analyze spreadsheets, generate formulas, and spot trends more efficiently for office reporting and decision support.</p>
-        </li>
+    <section class="advantages-section">
+      <div class="section-title-row">
+        <div class="section-title">Advantages and Disadvantages of AI</div>
+        <div class="section-sub">Benefits and risks of AI in work and daily life</div>
+      </div>
 
-        <li class="tool-item">
-          <span>Support</span>
-          <strong>Zendesk</strong>
-          <p>Improves customer service by automating support tasks, organizing tickets, and speeding up response times.</p>
-        </li>
+      <div class="advantages-grid">
+        <div class="advantage-card">
+          <h3>Advantages</h3>
+          <ul>
+            <li>AI can automate repetitive and time-consuming tasks.</li>
+            <li>It helps people work faster by summarizing information and generating drafts.</li>
+            <li>It supports better decision-making through data analysis and pattern recognition.</li>
+            <li>AI tools can provide 24/7 support and improve productivity across teams.</li>
+          </ul>
+        </div>
 
-        <li class="tool-item">
-          <span>Ethics</span>
-          <strong>Responsible AI</strong>
-          <p>Encourages fairness, transparency, privacy, and human oversight so AI use remains safe and reliable in the workplace.</p>
-        </li>
-      </ul>
+        <div class="advantage-card">
+          <h3>Disadvantages</h3>
+          <ul>
+            <li>AI can produce biased or inaccurate results if data or models are poor.</li>
+            <li>It raises privacy and security concerns when personal or sensitive data is used.</li>
+            <li>Overreliance on AI may reduce human judgment and critical thinking.</li>
+            <li>Some jobs may change or disappear as automation becomes more common.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="citation-box">
+        <p>Citations:</p>
+        <a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noopener">OECD AI Principles</a><br>
+        <a href="https://www.who.int/publications/i/item/9789240029200" target="_blank" rel="noopener">WHO — Ethics and governance of artificial intelligence for health</a><br>
+        <a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank" rel="noopener">McKinsey — The State of AI</a>
+      </div>
     </section>
 
     <section class="news-box" id="news">
