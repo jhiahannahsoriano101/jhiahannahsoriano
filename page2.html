@@ -626,56 +626,151 @@
       </div>
     </section>
 
-    <section class="section" id="ethics">
-      <div class="section-title-row">
-        <div class="section-title">Responsible AI Adoption</div>
-        <div class="section-sub">Ethics & governance</div>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page 2</title>
+  <style>
+    :root {
+      --bg: #f7f7fb;
+      --card: #ffffff;
+      --text: #1e1e2f;
+      --muted: #5b6072;
+      --accent: #3b82f6;
+      --line: #e8eaf3;
+      --shadow: 0 14px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1200px;
+      min-height: 700px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      border-radius: 24px;
+      padding: 60px 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 52px;
+      line-height: 1.1;
+      margin: 0 0 24px;
+      font-weight: 800;
+    }
+
+    .divider {
+      width: 90px;
+      height: 5px;
+      background: linear-gradient(90deg, var(--accent), #8b5cf6);
+      border-radius: 999px;
+      margin-bottom: 28px;
+    }
+
+    p {
+      font-size: 22px;
+      line-height: 1.7;
+      color: var(--text);
+      margin: 0 0 18px;
+    }
+
+    .citation {
+      margin-top: 26px;
+      font-size: 16px;
+      color: var(--muted);
+    }
+
+    .citation a {
+      color: var(--accent);
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 40px 30px;
+        min-height: auto;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      p {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="page">
+    <div class="content">
+      <div class="eyebrow">Responsible AI</div>
+      <h1>Responsible and Ethical Use of AI</h1>
+      <div class="divider"></div>
+
+      <p>
+        AI should be used to support human decision-making rather than replace accountability.
+        Organizations and individuals must ensure that AI systems are transparent, fair, secure,
+        and aligned with human values.
+      </p>
+
+      <p>
+        This includes being clear when AI is being used, checking outputs for bias or errors,
+        protecting sensitive data, and keeping humans in the loop for important decisions.
+        Responsible AI also means designing systems with governance in place, testing for
+        accuracy and fairness, and monitoring outcomes over time.
+      </p>
+
+      <p>
+        When deployed responsibly, AI can improve productivity and decision-making while
+        respecting privacy, inclusion, and public trust.
+      </p>
+
+      <div class="citation">
+        <strong>Citation:</strong>
+        <a href="https://oecd.ai/en/ai-principles" target="_blank" rel="noreferrer">
+          OECD AI Principles
+        </a>
       </div>
-      <div class="category-grid">
-        <article class="category-card">
-          <img src="https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=900&q=80" alt="Responsible AI and ethical technology concept" />
-          <div class="category-content">
-            <span class="category-tag">Ethics</span>
-            <h3>Responsible AI</h3>
-            <p>Ethical AI practices help offices reduce bias, improve transparency, protect data, and use AI responsibly.</p>
-
-            <div style="margin: 12px 0 14px;">
-              <strong style="display:block; margin-bottom:8px; color: var(--primary); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;">
-                Ethics subtopics
-              </strong>
-              <ul style="margin:0; padding-left:18px; color: var(--muted); line-height:1.8;">
-                <li>Fairness</li>
-                <li>Transparency</li>
-                <li>Privacy</li>
-                <li>Human oversight</li>
-              </ul>
-            </div>
-
-            <a href="https://www.ibm.com/think/topics/ai-ethics" target="_blank" rel="noopener">Open link →</a>
-          </div>
-        </article>
-
-        <article class="category-card">
-          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="AI governance discussion" />
-          <div class="category-content">
-            <span class="category-tag">Ethics</span>
-            <h3>IBM AI Ethics</h3>
-            <p>Focuses on trustworthy AI, policy frameworks, and more responsible implementation across organizations.</p>
-            <a href="https://www.ibm.com/artificial-intelligence" target="_blank" rel="noopener">Open IBM AI →</a>
-          </div>
-        </article>
-
-        <article class="category-card">
-          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80" alt="Business leadership and AI strategy" />
-          <div class="category-content">
-            <span class="category-tag">Ethics</span>
-            <h3>Google Responsible AI</h3>
-            <p>Shows how companies can align AI adoption with fairness, transparency, and accountability in practice.</p>
-            <a href="https://ai.google/responsibility/" target="_blank" rel="noopener">Open Google AI →</a>
-          </div>
-        </article>
-      </div>
-    </section>
+    </div>
+  </section>
+</body>
+</html>
 
     <section class="resource-box" id="better-links">
       <h3>Better links to explore</h3>
